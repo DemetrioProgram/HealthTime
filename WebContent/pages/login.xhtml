@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<h:outputStylesheet rel="stylesheet" library="css" name="bootstrap.css"
+		type="text/css" />
+	<h:outputStylesheet rel="stylesheet" library="css" name="style.css"
+		type="text/css" />
+	<title>Login!</title>
+</h:head>
+<h:body id="loginBody">
+	<h:form id="formLogin">
+		
+		<h1 style="text-align: center;margin-top: 5%;" >
+			<h:outputText id="bemVindo" style="font-weight: bold;" value="Bem vindo(a) ao Health Time." />
+		</h1>
+		<div class="formLogin" style="background: #a7c3e8;margin-top: 12%">
+		<h:panelGrid id="gridLoginSenha" style="margin-top: 20%" columns="2">
+			<h:outputText id="loginText" style="margin-left: 70px;" value="Login:" />
+			<h:inputText id="login" label="Login" required="true" />
+
+			<h:outputText id="senhaText" value="Senha:" style="margin-left: 70px;" />
+			<h:inputSecret id="senha" label="Senha" required="true" />
+		</h:panelGrid>
+		<h:messages id="msgErro" style="margin-top: 1%;color: red"/>
+		<h:commandButton id="botao" class="btn btn-success" style="margin-left: 170px;margin-top: 2%" href="pages/cadastro.xhtml" value="Entrar" />
+		</div>
+	</h:form>
+</h:body>
+</html>

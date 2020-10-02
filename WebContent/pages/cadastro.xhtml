@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="index.xhtml">
+	<ui:define name="body" style="background-color: ivory;" >
+
+		<h:outputLabel value="Cadastre-se"
+			style="font-size: 150%;margin-left: 43%;margin-top: 5%;margin-bottom: 5%;" />
+		<div class="col-sm-5">
+
+			<label for="nome" class="control-label">Nome</label>
+			<h:inputText class="form-control" name="nome">Nome</h:inputText>
+			
+			<label for="cpf" class="control-label">CPF:</label>
+			<h:inputText style="margin-top: 3%;margin-left: 3%;" name="cpf" >CPF</h:inputText>
+			
+			<label for="rg" style="margin-left: 3%" >RG:</label>
+			<h:inputText style="margin-top: 3%;margin-left: 4%;width: 41%" name="rg" >CPF</h:inputText>
+			
+			<label for="rg" class="control-label" style="margin-top: 4%">Nome da mãe:</label>
+			<h:inputText style="margin-top: 2%;width: 100%" name="rg" >CPF</h:inputText>
+			
+		</div>
+	</ui:define>
+</ui:composition>
+
+</html>
