@@ -1,4 +1,4 @@
-package br.com.healthtime.entity;
+package br.com.healthtime.resources;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

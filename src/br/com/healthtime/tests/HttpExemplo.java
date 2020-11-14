@@ -32,11 +32,11 @@ public class HttpExemplo {
         
         JSONObject obj = new JSONObject();
         
-        u.setCpf("123.212.321-43");
+        /*u.setCpf("123.212.321-43");
         u.setDtNascimento("22/23/231");
         
         obj.put("cpf", u.getCpf());
-        obj.put("dtNasci", u.getDtNascimento());
+        obj.put("dtNasci", u.getDtNascimento());*/
         //String json = HTTP.toString(obj);
         String url = "http://localhost:8081/lista_usuario";
         
