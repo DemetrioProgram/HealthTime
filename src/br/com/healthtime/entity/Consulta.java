@@ -1,5 +1,6 @@
 package br.com.healthtime.entity;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 import javax.persistence.CascadeType;
@@ -14,8 +15,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "consulta")
-public class Consulta {
+public class Consulta implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer cdConsulta;

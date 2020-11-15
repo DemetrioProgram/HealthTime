@@ -1,7 +1,11 @@
 package br.com.healthtime.entity;
 
+import java.io.Serializable;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,8 +15,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "usuario")
-public class Usuario {
+public class Usuario implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long cdUsuario;
@@ -42,7 +50,7 @@ public class Usuario {
 	private boolean flGestante;
 	@Column(name="flmenoridade", nullable = true)
 	private boolean flMenorIdade;
-	@OneToOne
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "cdEndereco", referencedColumnName = "cdEndereco", nullable = false)
 	private Endereco endereco;
 	

@@ -1,5 +1,6 @@
 package br.com.healthtime.entity;
 
+import java.io.Serializable;
 import java.sql.Blob;
 
 import javax.persistence.Column;
@@ -11,8 +12,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "receita")
-public class Receita {
+public class Receita implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer cdArquivo;

@@ -8,10 +8,10 @@
 		<property name="hibernate.connection.password">1234</property>
 		<property name="hibernate.connection.url">jdbc:mysql://localhost/healthtime</property>
 		<property name="hibernate.connection.username">root</property>
-		<property name="hibernate.dialect">org.hibernate.dialect.MySQL55Dialect</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
 		<property name="hibernate.show_sql">true</property>
 		<property name="hibernate.format_sql">true</property>
-		<property name="hbm2ddl.auto">create-drop</property>
+		<property name="hbm2ddl.auto">update</property>
 		<property name="hibernate.connection.autocommit">true</property>
 		
 
