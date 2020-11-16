@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,16 +33,16 @@ public class Consulta implements Serializable {
 	private boolean flvacina;
 	@Column(name = "deprediagnostico", nullable = true)
 	private String deprediagnostico;
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "cdArquivo", referencedColumnName = "cdArquivo", nullable = true)
 	private Receita cdArquivo;
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "cdPaciente", referencedColumnName = "cdUsuario", nullable = true)
 	private Usuario cdPaciente;
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "cdMedico", referencedColumnName = "cdUsuario", nullable = false)
 	private Usuario cdMedico;
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "cdFuncioanrio", referencedColumnName = "cdUsuario", nullable = false)
 	private Usuario cdFuncioanrio;
 	

@@ -1,12 +1,9 @@
 package br.com.healthtime.servelet;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,7 +17,6 @@ import br.com.healthtime.entity.Usuario;
 /**
  * Servlet implementation class CadastroUsuario
  */
-@WebServlet("/CadastroUsuario")
 public class CadastroUsuario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -55,7 +51,7 @@ public class CadastroUsuario extends HttpServlet {
 		String nmUsuario = req.getParameter("txtNome");
 		String nuCpf = req.getParameter("txtNuCpf");
 		String dtNascimento = req.getParameter("txtDtNascimento");
-		String email = req.getParameter("txtemail");
+		String email = req.getParameter("txtEmail");
 		String flGestante = req.getParameter("flGestante");
 		String flIdoso = req.getParameter("flIdoso");
 		String flMenorIdade = req.getParameter("flMenorIdade");
@@ -81,6 +77,7 @@ public class CadastroUsuario extends HttpServlet {
 				usuario.setCpf(nuCpf);
 				usuario.setDtnascimento(Integer.parseInt(dtNascimento));
 				usuario.setNuContatoPrincipal(nuContato);
+				usuario.setNuContatoSecundario(nuContato2);
 				usuario.setNomeMae(nmMae);
 				usuario.setEmail(email);
 				usuario.setFlGestante(Boolean.parseBoolean(flGestante));
@@ -97,6 +94,8 @@ public class CadastroUsuario extends HttpServlet {
 				endereco.setRua(nmRua);
 				endereco.setUf(UF);
 				usuario.setEndereco(endereco);
+				
+				System.out.println("Usuario: "+usuario);
 				
 				
 				UsuarioDAO dao = new UsuarioDAO();
