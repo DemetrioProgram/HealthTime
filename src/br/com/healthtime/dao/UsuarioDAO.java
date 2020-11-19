@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 import br.com.healthtime.entity.Endereco;
 import br.com.healthtime.entity.Usuario;
@@ -81,6 +82,35 @@ public class UsuarioDAO {
 
 		} catch (Exception e) {
 			System.out.println("Erro listarTodos");
+			e.printStackTrace();
+			return null;
+		} finally {
+			if (session != null && session.isOpen()) {
+				session.close();
+			}
+		}
+	}
+	
+	public static Usuario doLogin(String cpf) {
+
+		Session session = HibernateUtil.getSessionFactory().openSession();
+
+		Transaction transaction = null;
+
+		try {
+			transaction = session.beginTransaction();
+
+			Criteria query = session.createCriteria(Usuario.class);
+			Usuario usuario = (Usuario) query.add(Restrictions.eq("cpf", cpf)).uniqueResult();
+
+			System.out.println("Usuario" + usuario);
+
+			transaction.commit();
+
+			return usuario;
+
+		} catch (Exception e) {
+			System.out.println("Erro doLogin");
 			e.printStackTrace();
 			return null;
 		} finally {

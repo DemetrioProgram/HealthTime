@@ -20,9 +20,29 @@
         <servlet-class>br.com.healthtime.servelet.CadastroUsuario</servlet-class>
     </servlet>
     
+    <servlet>
+        <servlet-name>Login</servlet-name>
+        <servlet-class>br.com.healthtime.servelet.Login</servlet-class>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>ValidaUsuario</servlet-name>
+        <servlet-class>br.com.healthtime.servelet.ValidaUsuario</servlet-class>
+    </servlet>
+    
     <servlet-mapping>
         <servlet-name>CadastroUsuario</servlet-name>
         <url-pattern>/CadastroUsuario</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/Login</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>ValidaUsuario</servlet-name>
+        <url-pattern>/ValidaUsuario</url-pattern>
     </servlet-mapping>
 	
 </web-app>
