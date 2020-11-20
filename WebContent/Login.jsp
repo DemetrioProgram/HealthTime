@@ -34,7 +34,7 @@
 						if (erro != null) {
 							
 							%>
-						<div>
+						<div class="alert alert-danger" role="alert" style="text-align: center;margin-top: 10px;">
 							<span><%= erro.getMessage() %></span>
 						</div>
 						<% } %>
