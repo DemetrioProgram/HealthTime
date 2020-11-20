@@ -54,17 +54,9 @@ public class Login extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("Principal.jsp");
 			rd.forward(request, response);
 		} else {
-			PrintWriter out = response.getWriter();
-			out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
-			out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
-			out.println("<script>");
-			out.println("$(document).ready(function() {");
-			out.println("swal ('Usuário não encontrado', '', 'error' );");
-			out.println("});");
-			out.println("</script>");
-
+			request.setAttribute("erro", new Exception("Usuário não encontrado."));
 			RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
-			rd.include(request, response);
+			rd.forward(request, response);
 		}
 				
 	}

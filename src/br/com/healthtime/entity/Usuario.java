@@ -29,7 +29,7 @@ public class Usuario implements Serializable {
 	@Column(name="nucontatoprincipal", nullable = false)
 	private String nuContatoPrincipal;
 	@Column(name="nucontatosecundario", nullable = true)
-	private String nuContatoSecundario;
+	private String nuContatoSecundario = "";
 	@Column(name="dtnascimento", nullable = false)
 	private Integer dtnascimento;
 	@Column(name="cpf", nullable = false)
@@ -129,7 +129,7 @@ public class Usuario implements Serializable {
 	}
 
 	public void setNuContatoSecundario(String nuContatoSecundario) {
-		this.nuContatoSecundario = nuContatoSecundario;
+		this.nuContatoSecundario = nuContatoSecundario == null ? "" : nuContatoSecundario;
 	}
 
 	public Integer getDtnascimento() {

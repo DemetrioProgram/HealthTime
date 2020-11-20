@@ -38,14 +38,22 @@ public class ValidaUsuario extends HttpServlet {
 		
 		Usuario usuario = new Usuario();
 		usuario = UsuarioDAO.doLogin(cpf);
-		
 		System.out.println(usuario);
 		
 		if (usuario != null) {
-
+			request.setAttribute("usuario", usuario);
+			RequestDispatcher rd = request.getRequestDispatcher("ValidarUsuario.jsp");
+			rd.forward(request, response);
 		} else {
 			
 		}
+
+		String tipoDeUsuario = request.getParameter("comboUsuario");
+		System.out.println("tipoDeUsuario: "+tipoDeUsuario);
+		
+		//Update
+
+		
 	}
 
 	/**
