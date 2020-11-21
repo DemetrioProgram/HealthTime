@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.healthtime.bo.UsuarioBO;
 import br.com.healthtime.dao.UsuarioDAO;
 import br.com.healthtime.entity.Endereco;
 import br.com.healthtime.entity.Usuario;
@@ -67,7 +68,7 @@ public class CadastroUsuario extends HttpServlet {
 		String UF = req.getParameter("cbxUf");
 		String nuCep = req.getParameter("txtCep");
 		
-		
+		System.out.println("flag: "+flGestante);
 
 			try {
 
@@ -98,8 +99,8 @@ public class CadastroUsuario extends HttpServlet {
 				System.out.println("Usuario: "+usuario);
 				
 				
-				UsuarioDAO dao = new UsuarioDAO();
-				dao.salvaUsuario(usuario);;
+				UsuarioBO bo = new UsuarioBO();
+				bo.salvaUsuario(usuario);;
 				
 
 			} catch (Exception e) {

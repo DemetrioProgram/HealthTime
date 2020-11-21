@@ -47,24 +47,24 @@
 
 						<tr>
 							<td align="right"><label class="fonte">Gestante:</label></td>
-							<td align="left"><input type="checkbox" name="flGestante" /></td>
+							<td align="left"><input type="checkbox" value="true" name="flGestante" /></td>
 						</tr>
 
 						<tr>
 							<td align="right"><label class="fonte">Idoso:</label></td>
-							<td align="left"><input type="checkbox" name="flIdoso" /></td>
+							<td align="left"><input type="checkbox" value="true" name="flIdoso" /></td>
 						</tr>
 
 						<tr>
 							<td align="right"><label class="fonte">Menor de
 									Idade:</label></td>
-							<td align="left"><input type="checkbox" name="flMenorIdade" /></td>
+							<td align="left"><input type="checkbox" value="true" name="flMenorIdade" /></td>
 						</tr>
 
 						<tr>
 							<td align="right"><label class="fonte">Pessoa com
 									Nessecidades Especiais:</label></td>
-							<td align="left"><input type="checkbox" name="flPne" /></td>
+							<td align="left"><input type="checkbox" value="true" name="flPne" /></td>
 						</tr>
 
 						<tr>
