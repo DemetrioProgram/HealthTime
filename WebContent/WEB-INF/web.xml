@@ -25,6 +25,11 @@
         <servlet-class>br.com.healthtime.servelet.Login</servlet-class>
     </servlet>
     
+     <servlet>
+        <servlet-name>CadastroConsulta</servlet-name>
+        <servlet-class>br.com.healthtime.servelet.CadastroConsulta</servlet-class>
+    </servlet>
+    
     <servlet>
         <servlet-name>ValidaUsuario</servlet-name>
         <servlet-class>br.com.healthtime.servelet.ValidaUsuario</servlet-class>
@@ -43,6 +48,11 @@
     <servlet-mapping>
         <servlet-name>ValidaUsuario</servlet-name>
         <url-pattern>/ValidaUsuario</url-pattern>
+    </servlet-mapping>
+    
+     <servlet-mapping>
+        <servlet-name>CadastroConsulta</servlet-name>
+        <url-pattern>/CadastroConsulta</url-pattern>
     </servlet-mapping>
 	
 </web-app>
