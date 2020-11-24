@@ -1,6 +1,7 @@
 package br.com.healthtime.servelet;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.healthtime.bo.UsuarioBO;
-import br.com.healthtime.dao.UsuarioDAO;
 import br.com.healthtime.entity.Endereco;
 import br.com.healthtime.entity.Usuario;
 
@@ -76,7 +76,7 @@ public class CadastroUsuario extends HttpServlet {
 				usuario.setCodigo(1);
 				usuario.setNome(nmUsuario);
 				usuario.setCpf(nuCpf);
-				usuario.setDtnascimento(Integer.parseInt(dtNascimento));
+				usuario.setDtnascimento(LocalDate.parse(dtNascimento));
 				usuario.setNuContatoPrincipal(nuContato);
 				usuario.setNuContatoSecundario(nuContato2);
 				usuario.setNomeMae(nmMae);

@@ -1,6 +1,7 @@
 package br.com.healthtime.entity;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -31,7 +32,7 @@ public class Usuario implements Serializable {
 	@Column(name="nucontatosecundario", nullable = true)
 	private String nuContatoSecundario = "";
 	@Column(name="dtnascimento", nullable = false)
-	private Integer dtnascimento;
+	private LocalDate dtnascimento;
 	@Column(name="cpf", nullable = false)
 	private String cpf;
 	@Column(name="sus", nullable = true)
@@ -60,7 +61,7 @@ public class Usuario implements Serializable {
 	}
 
 	public Usuario(Long cdUsuario, String nome, String nuContatoPrincipal, String nuContatoSecundario,
-			Integer dtnascimento, String cpf, String sus, String email, String nomeMae, Integer codigo, boolean flPne,
+			LocalDate dtnascimento, String cpf, String sus, String email, String nomeMae, Integer codigo, boolean flPne,
 			boolean flIdoso, boolean flGestante, boolean flMenorIdade, Endereco endereco) {
 		super();
 		this.cdUsuario = cdUsuario;
@@ -80,7 +81,7 @@ public class Usuario implements Serializable {
 		this.endereco = endereco;
 	}
 
-	public Usuario(String nome, String nuContatoPrincipal, String nuContatoSecundario, Integer dtnascimento, String cpf,
+	public Usuario(String nome, String nuContatoPrincipal, String nuContatoSecundario, LocalDate dtnascimento, String cpf,
 			String sus, String email, String nomeMae, Integer codigo, boolean flPne, boolean flIdoso,
 			boolean flGestante, boolean flMenorIdade, Endereco endereco) {
 		super();
@@ -132,11 +133,11 @@ public class Usuario implements Serializable {
 		this.nuContatoSecundario = nuContatoSecundario == null ? "" : nuContatoSecundario;
 	}
 
-	public Integer getDtnascimento() {
+	public LocalDate getDtnascimento() {
 		return dtnascimento;
 	}
 
-	public void setDtnascimento(Integer dtnascimento) {
+	public void setDtnascimento(LocalDate dtnascimento) {
 		this.dtnascimento = dtnascimento;
 	}
 

@@ -1,5 +1,6 @@
 package br.com.healthtime.dao;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -17,8 +18,8 @@ public class UsuarioDAO {
 		Usuario usuario = new Usuario();
 		usuario.setCodigo(1);
 		usuario.setNome("Mocorongo");
-		usuario.setCpf("112321454357");
-		usuario.setDtnascimento(12201929);
+		usuario.setCpf("112321454357");		
+		usuario.setDtnascimento(LocalDate.now());
 		usuario.setNuContatoPrincipal("98377348");
 		usuario.setNomeMae("nomeMae");
 		usuario.setEmail("email@email.com");
