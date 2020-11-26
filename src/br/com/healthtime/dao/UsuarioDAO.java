@@ -18,7 +18,7 @@ public class UsuarioDAO {
 		Usuario usuario = new Usuario();
 		usuario.setCodigo(1);
 		usuario.setNome("Mocorongo");
-		usuario.setCpf("112321454357");		
+		usuario.setCpf("112321454357");
 		usuario.setDtnascimento(LocalDate.now());
 		usuario.setNuContatoPrincipal("98377348");
 		usuario.setNomeMae("nomeMae");
@@ -91,7 +91,7 @@ public class UsuarioDAO {
 			}
 		}
 	}
-	
+
 	public static Usuario doLogin(String cpf) {
 
 		Session session = HibernateUtil.getSessionFactory().openSession();
@@ -112,6 +112,33 @@ public class UsuarioDAO {
 
 		} catch (Exception e) {
 			System.out.println("Erro doLogin");
+			e.printStackTrace();
+			return null;
+		} finally {
+			if (session != null && session.isOpen()) {
+				session.close();
+			}
+		}
+	}
+
+	public static Usuario validaUsuario(Usuario usuario) {
+
+		Session session = HibernateUtil.getSessionFactory().openSession();
+
+		Transaction transaction = null;
+
+		try {
+
+			transaction = session.beginTransaction();
+
+			session.update(usuario);
+
+			transaction.commit();
+
+			return usuario;
+
+		} catch (Exception e) {
+			System.out.println("Erro validaUsuario");
 			e.printStackTrace();
 			return null;
 		} finally {

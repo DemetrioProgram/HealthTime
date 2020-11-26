@@ -49,9 +49,16 @@ public class ValidaUsuario extends HttpServlet {
 		}
 
 		String tipoDeUsuario = request.getParameter("comboUsuario");
+		usuario.setCodigo(Integer.parseInt(tipoDeUsuario));
 		System.out.println("tipoDeUsuario: "+tipoDeUsuario);
 		
-		//Update
+		Usuario usuarioAlterado = UsuarioDAO.validaUsuario(usuario);
+		
+		if (usuarioAlterado != null) {
+			
+		} else {
+			
+		}
 
 		
 	}
