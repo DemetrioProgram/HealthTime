@@ -11,19 +11,27 @@ public class UsuarioBO {
 
 	public void salvaUsuario(Usuario usuario) throws Exception {
 		
+		
+		Usuario objUsuario = dao.doLogin(usuario.getCpf());
+		
+		if (objUsuario != null)
+		{
+			throw new Exception("CPF já cadastrado");	
+		}
+		
 		//RN12
-		//LocalDate data = LocalDate.parse(usuario.getDtnascimento().toString());
-		//LocalDate dataAtual = LocalDate.now();
+		LocalDate data = usuario.getDtnascimento();
+		LocalDate dataAtual = LocalDate.now();
 		
-		//if (data.plusYears(18).isBefore(dataAtual) && usuario.isFlMenorIdade()) 
-		//{
-			//throw new Exception("A data informada está inválida para usuário menor de idade");			
-		//}
+		if (data.plusYears(18).isBefore(dataAtual) && usuario.isFlMenorIdade()) 
+		{
+			throw new Exception("A data informada está inválida para usuário menor de idade");			
+		}
 		
-		//if (data.plusYears(18).isAfter(dataAtual) && !usuario.isFlMenorIdade()) 
-		//{
-			//throw new Exception("É obrigatorio selecionar a opção Menor de Idade");
-		//}
+		if (data.plusYears(18).isAfter(dataAtual) && !usuario.isFlMenorIdade()) 
+		{
+			throw new Exception("É obrigatorio selecionar a opção Menor de Idade");
+		}
 		
 		if (usuario.isFlMenorIdade() == true && usuario.getNomeMae().isEmpty())
 		{

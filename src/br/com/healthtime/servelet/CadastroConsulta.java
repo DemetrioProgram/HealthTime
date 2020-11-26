@@ -2,6 +2,7 @@ package br.com.healthtime.servelet;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.healthtime.bo.ConsultaBO;
 import br.com.healthtime.bo.UsuarioBO;
+import br.com.healthtime.dao.UsuarioDAO;
 import br.com.healthtime.entity.Consulta;
 import br.com.healthtime.entity.Endereco;
 import br.com.healthtime.entity.Usuario;
@@ -22,6 +24,8 @@ import br.com.healthtime.entity.Usuario;
 
 public class CadastroConsulta extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -52,10 +56,12 @@ public class CadastroConsulta extends HttpServlet {
 		// Cadastrar Usuario
 
 		String dtConsulta = req.getParameter("txtDtConsulta");
-		String horario = req.getParameter("cbxhorario");
+		String horario = req.getParameter("cbxHorario");
 		String nmMedico = req.getParameter("cbxMedico");
 		
-		String data = dtConsulta +" "+ horario;
+		System.out.println("hora" + horario);
+		
+		String data = dtConsulta +" " + horario;
 		
 		System.out.println("data" + data);
 		
@@ -64,8 +70,13 @@ public class CadastroConsulta extends HttpServlet {
 			try {
 
 				Consulta consulta = new Consulta();
+				
+				//teste
+				Usuario objUsuario = UsuarioDAO.doLogin("08168815963");
 			
-				consulta.setData(LocalDate.parse(data));
+				consulta.setData(LocalDate.parse(data, format));
+				consulta.setCdFuncioanrio(objUsuario);
+				consulta.setCdMedico(objUsuario);
 
 				System.out.println("Consulta: "+consulta);
 				

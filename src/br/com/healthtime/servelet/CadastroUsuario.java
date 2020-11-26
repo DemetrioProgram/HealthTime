@@ -2,6 +2,7 @@ package br.com.healthtime.servelet;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,6 +21,8 @@ import br.com.healthtime.entity.Usuario;
  */
 public class CadastroUsuario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -51,7 +54,8 @@ public class CadastroUsuario extends HttpServlet {
 
 		String nmUsuario = req.getParameter("txtNome");
 		String nuCpf = req.getParameter("txtNuCpf");
-		String dtNascimento = req.getParameter("txtDtNascimento");
+		
+		String dtNascimento = req.getParameter("txtDtNascimento");	
 		String email = req.getParameter("txtEmail");
 		String flGestante = req.getParameter("flGestante");
 		String flIdoso = req.getParameter("flIdoso");
@@ -68,7 +72,8 @@ public class CadastroUsuario extends HttpServlet {
 		String UF = req.getParameter("cbxUf");
 		String nuCep = req.getParameter("txtCep");
 		
-		System.out.println("flag: "+flGestante);
+		
+		
 
 			try {
 
@@ -76,7 +81,10 @@ public class CadastroUsuario extends HttpServlet {
 				usuario.setCodigo(1);
 				usuario.setNome(nmUsuario);
 				usuario.setCpf(nuCpf);
-				usuario.setDtnascimento(LocalDate.parse(dtNascimento));
+				usuario.setDtnascimento(LocalDate.parse(dtNascimento, format));
+				
+				System.out.println("data: "+usuario.getDtnascimento());
+				
 				usuario.setNuContatoPrincipal(nuContato);
 				usuario.setNuContatoSecundario(nuContato2);
 				usuario.setNomeMae(nmMae);

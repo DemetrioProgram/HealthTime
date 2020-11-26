@@ -4,6 +4,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+
+
+
+<script type="text/javascript">
+
+
+
+</script>
+
+
+
 <title>Cadastrar Usuario</title>
 </head>
 
@@ -30,14 +41,14 @@
 						<tr>
 							<td align="right"><label class="fonte">CPF:</label></td>
 							<td align="left"><input type="text" size="20"
-								name="txtNuCpf" required /></td>
+								name="txtNuCpf" id="cpf" required /></td>
 						</tr>
 
 						<tr>
 							<td align="right"><label class="fonte">Data
 									Nascimento:</label></td>
-							<td align="left"><input type="text" name="txtDtNascimento"
-								required /></td>
+							<td align="left"><input type="text" name="txtDtNascimento" id="txtDtNascimento"
+								data-mask="00/00/0000" required /></td>
 						</tr>
 
 						<tr>
@@ -149,6 +160,17 @@
 
 
 	</form>
+	
+	<script src="jquery.1.11.1.min.js"></script>
+<script src="jquery.mask.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+	  $('#cpf').mask('000.000.000-00', {reverse:true});
+
+})
+
+</script>
 
 </body>
 </html>
