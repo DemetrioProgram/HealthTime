@@ -4,18 +4,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-
-
-
-<script type="text/javascript">
-
-
-
-</script>
-
-
-
 <title>Cadastrar Usuario</title>
+<script
+	src="resources/js/jquery-1.5.2.min.js"></script>
+	<script src="resources/js/jquery.maskedinput-1.3.min.js"></script>
 </head>
 
 
@@ -40,15 +32,15 @@
 
 						<tr>
 							<td align="right"><label class="fonte">CPF:</label></td>
-							<td align="left"><input type="text" size="20"
-								name="txtNuCpf" id="cpf" required /></td>
+							<td align="left"><input type="text" id="cpf" size="20"
+								name="txtNuCpf" required /></td>
 						</tr>
 
 						<tr>
 							<td align="right"><label class="fonte">Data
 									Nascimento:</label></td>
 							<td align="left"><input type="text" name="txtDtNascimento" id="txtDtNascimento"
-								data-mask="00/00/0000" required /></td>
+								required /></td>
 						</tr>
 
 						<tr>
@@ -81,13 +73,13 @@
 						<tr>
 							<td align="right"><label class="fonte">Nome da Mãe:</label>
 							</td>
-							<td align="left"><input type="text" name="txtNmMae" reuired /></td>
+							<td align="left"><input type="text" name="txtNmMae" required /></td>
 						</tr>
 
 						<tr>
 							<td align="right"><label class="fonte">Tel. Contato:</label>
 							</td>
-							<td align="left"><input type="text" name="txtNuContato" /></td>
+							<td align="left"><input type="text" id="telefone" name="txtNuContato" /></td>
 						</tr>
 
 						<tr>
@@ -144,8 +136,13 @@
 							<td></td>
 						</tr>
 					</table>
-
-
+					
+					<script>
+						jQuery(function($) {
+							$("#cpf").mask("999.999.999-99");
+							$("#telefone").mask("(999) 99999-9999");
+						});
+					</script>
 
 					<table id="tblBotao">
 						<tr>
@@ -160,17 +157,6 @@
 
 
 	</form>
-	
-	<script src="jquery.1.11.1.min.js"></script>
-<script src="jquery.mask.js"></script>
-<script type="text/javascript">
-
-$(document).ready(function(){
-	  $('#cpf').mask('000.000.000-00', {reverse:true});
-
-})
-
-</script>
 
 </body>
 </html>
