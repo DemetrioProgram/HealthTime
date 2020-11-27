@@ -35,7 +35,7 @@
 							</td>
 							
 							<td align="left">
-								<input type="text" name="txtNuCpf" required />
+								<input type="text" name="txtNuCpf" value="<%= usuario.getCpf() %>" required />
 							</td>
 							<td align="left">
 							<input type="submit" value="Buscar Usuário" />
@@ -55,7 +55,7 @@
 						<tr>
 							<td align="right"><label class="fonte">Data
 									Nascimento:</label></td>
-							<td align="left"><input type="text" name="txtDtNascimento" value="<%= usuario.getDtnascimento() %>" disabled
+							<td align="left"><input type="date" name="txtDtNascimento" value="<%= usuario.getDtnascimento() %>" disabled
 								required /></td>
 						</tr>
 

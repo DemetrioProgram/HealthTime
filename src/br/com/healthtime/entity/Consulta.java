@@ -17,7 +17,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "consulta")
 public class Consulta implements Serializable {
-	
+
 	/**
 	 * 
 	 */
@@ -27,6 +27,8 @@ public class Consulta implements Serializable {
 	private Integer cdConsulta;
 	@Column(name = "data", nullable = false)
 	private LocalDate data;
+	@Column(name = "horario", nullable = false)
+	private String horario;
 	@Column(name = "flretorno", nullable = false)
 	private boolean retorno;
 	@Column(name = "flvacina", nullable = true)
@@ -45,17 +47,18 @@ public class Consulta implements Serializable {
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "cdFuncioanrio", referencedColumnName = "cdUsuario", nullable = false)
 	private Usuario cdFuncioanrio;
-	
+
 	public Consulta() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Consulta(Integer cdConsulta, LocalDate data, boolean retorno, boolean flvacina, String deprediagnostico,
-			Receita cdArquivo, Usuario cdPaciente, Usuario cdMedico, Usuario cdFuncioanrio) {
+	public Consulta(Integer cdConsulta, LocalDate data, String horario, boolean retorno, boolean flvacina,
+			String deprediagnostico, Receita cdArquivo, Usuario cdPaciente, Usuario cdMedico, Usuario cdFuncioanrio) {
 		super();
 		this.cdConsulta = cdConsulta;
 		this.data = data;
+		this.horario = horario;
 		this.retorno = retorno;
 		this.flvacina = flvacina;
 		this.deprediagnostico = deprediagnostico;
@@ -65,10 +68,11 @@ public class Consulta implements Serializable {
 		this.cdFuncioanrio = cdFuncioanrio;
 	}
 
-	public Consulta(LocalDate data, boolean retorno, boolean flvacina, String deprediagnostico, Receita cdArquivo,
-			Usuario cdPaciente, Usuario cdMedico, Usuario cdFuncioanrio) {
+	public Consulta(LocalDate data, String horario, boolean retorno, boolean flvacina, String deprediagnostico,
+			Receita cdArquivo, Usuario cdPaciente, Usuario cdMedico, Usuario cdFuncioanrio) {
 		super();
 		this.data = data;
+		this.horario = horario;
 		this.retorno = retorno;
 		this.flvacina = flvacina;
 		this.deprediagnostico = deprediagnostico;
@@ -92,6 +96,14 @@ public class Consulta implements Serializable {
 
 	public void setData(LocalDate data) {
 		this.data = data;
+	}
+
+	public String getHorario() {
+		return horario;
+	}
+
+	public void setHorario(String horario) {
+		this.horario = horario;
 	}
 
 	public boolean isRetorno() {
@@ -150,10 +162,14 @@ public class Consulta implements Serializable {
 		this.cdFuncioanrio = cdFuncioanrio;
 	}
 
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	@Override
 	public String toString() {
-		return "Consulta [cdConsulta=" + cdConsulta + ", data=" + data + ", retorno=" + retorno + ", flvacina="
-				+ flvacina + ", deprediagnostico=" + deprediagnostico + ", cdArquivo=" + cdArquivo + ", cdPaciente="
-				+ cdPaciente + ", cdMedico=" + cdMedico + ", cdFuncioanrio=" + cdFuncioanrio + "]";
+		return "Consulta [cdConsulta=" + cdConsulta + ", data=" + data + ", horario=" + horario + ", retorno=" + retorno
+				+ ", flvacina=" + flvacina + ", deprediagnostico=" + deprediagnostico + ", cdArquivo=" + cdArquivo
+				+ ", cdPaciente=" + cdPaciente + ", cdMedico=" + cdMedico + ", cdFuncioanrio=" + cdFuncioanrio + "]";
 	}
 }

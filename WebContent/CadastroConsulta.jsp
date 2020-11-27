@@ -24,7 +24,7 @@
 
 						<tr>
 							<td align="right"><label class="fonte">Data da Consulta:</label></td>
-							<td align="left"><input type="text" size="10" name="txtDtConsulta"
+							<td align="left"><input type="date" size="10" name="txtDtConsulta"
 								required /></td>
 						</tr>
 

@@ -55,7 +55,9 @@ public class ValidaUsuario extends HttpServlet {
 		Usuario usuarioAlterado = UsuarioDAO.validaUsuario(usuario);
 		
 		if (usuarioAlterado != null) {
-			
+			request.setAttribute("usuario", null);
+			RequestDispatcher rd = request.getRequestDispatcher("ValidarUsuario.jsp");
+			rd.forward(request, response);
 		} else {
 			
 		}
