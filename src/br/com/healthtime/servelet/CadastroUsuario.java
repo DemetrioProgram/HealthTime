@@ -55,6 +55,8 @@ public class CadastroUsuario extends HttpServlet {
 		String nmUsuario = req.getParameter("txtNome");
 		String nuCpf = req.getParameter("txtNuCpf");
 		
+		nuCpf = nuCpf.replace(".", "").replace("-", "");
+		System.out.println(nuCpf);
 		String dtNascimento = req.getParameter("txtDtNascimento");	
 		String email = req.getParameter("txtEmail");
 		String flGestante = req.getParameter("flGestante");
