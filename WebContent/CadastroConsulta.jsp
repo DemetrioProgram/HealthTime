@@ -53,13 +53,19 @@
 
 						<tr>
 							<td align="right"><label class="fonte">Médico:</label></td>
-							<td><select id="cbxMedico" name="cbxMedico" required>
-								<option value="">Nenhuma</option>
-								<option value="1">Rayane</option>
- 								 <option value="2">Magno</option>
-  								<option value="3">Luis</option>
-								 								  
-								</select></td>
+							<td>
+							
+								<select id="cbxMedico" name="cbxMedico" required>
+									<option value="">Selecione</option>
+							
+										<c:forEach var="medicos" items="${medicos}">
+											<option value="${medicos.cdUsuario}">
+												${medicos.nome}
+											</option>
+										</c:forEach>
+							
+								</select>
+							</td>
 						</tr>
 
 						

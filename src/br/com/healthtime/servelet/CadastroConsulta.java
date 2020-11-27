@@ -3,19 +3,17 @@ package br.com.healthtime.servelet;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.healthtime.bo.ConsultaBO;
-import br.com.healthtime.bo.UsuarioBO;
 import br.com.healthtime.dao.UsuarioDAO;
 import br.com.healthtime.entity.Consulta;
-import br.com.healthtime.entity.Endereco;
 import br.com.healthtime.entity.Usuario;
 
 /**
@@ -27,13 +25,13 @@ public class CadastroConsulta extends HttpServlet {
 	private Usuario usuarioLogado = new Usuario();
 	
 	DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+	List<Usuario> medicos;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
     public CadastroConsulta() {
         super();
-        System.out.println("Inicial");
         // TODO Auto-generated constructor stub
     }
 
@@ -44,12 +42,22 @@ public class CadastroConsulta extends HttpServlet {
 		// TODO Auto-generated method stub
     	System.out.println("Inicial get");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		 
+		medicos = UsuarioDAO.listarMedicos(2);
+		
+		if (medicos != null)
+		{
+			request.setAttribute("medicos", medicos);
+			RequestDispatcher rd = request.getRequestDispatcher("CadastroConsulta.jsp");
+			rd.forward(request, response);
+		}	
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		// TODO Auto-generated method stub
 		System.out.println("Inicial post");
 		processRequest(request, response);
@@ -57,7 +65,7 @@ public class CadastroConsulta extends HttpServlet {
 	
 	private void validaDadosRecebidos(HttpServletRequest req) throws ServletException {
 
-		// Cadastrar Usuario
+	
 
 		String dtConsulta = req.getParameter("txtDtConsulta");
 		String horario = req.getParameter("cbxHorario");
@@ -89,6 +97,8 @@ public class CadastroConsulta extends HttpServlet {
 	
 private void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+	
+	
 		try {
 			usuarioLogado = (Usuario) req.getSession().getAttribute("usuario");
 			validaDadosRecebidos(req);
@@ -101,4 +111,14 @@ private void processRequest(HttpServletRequest req, HttpServletResponse resp) th
 		}
 	
 	}
+
+
+
+
+  public void listarMedicos() {
+	  
+	  medicos = UsuarioDAO.listarMedicos(2);
+	 
+  }
+
 }

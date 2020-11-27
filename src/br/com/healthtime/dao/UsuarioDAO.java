@@ -148,4 +148,33 @@ public class UsuarioDAO {
 		}
 	}
 
+	public static List<Usuario> listarMedicos(int codigo) {
+		
+		Session session = HibernateUtil.getSessionFactory().openSession();
+
+		Transaction transaction = null;
+
+		try {
+			transaction = session.beginTransaction();
+
+			Criteria query = session.createCriteria(Usuario.class);
+			List<Usuario> medicos = (List<Usuario>) query.add(Restrictions.eqOrIsNull("codigo", codigo)).uniqueResult();
+
+			System.out.println("Usuario" + medicos);
+
+			transaction.commit();
+
+			return medicos;
+
+		} catch (Exception e) {
+			System.out.println("Erro doLogin");
+			e.printStackTrace();
+			return null;
+		} finally {
+			if (session != null && session.isOpen()) {
+				session.close();
+			}
+		}
+	}
+
 }

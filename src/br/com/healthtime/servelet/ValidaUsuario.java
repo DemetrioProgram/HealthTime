@@ -1,7 +1,7 @@
 package br.com.healthtime.servelet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.healthtime.bo.UsuarioBO;
 import br.com.healthtime.dao.UsuarioDAO;
 import br.com.healthtime.entity.Usuario;
 
@@ -52,7 +53,13 @@ public class ValidaUsuario extends HttpServlet {
 		usuario.setCodigo(Integer.parseInt(tipoDeUsuario));
 		System.out.println("tipoDeUsuario: "+tipoDeUsuario);
 		
-		Usuario usuarioAlterado = UsuarioDAO.validaUsuario(usuario);
+		Usuario usuarioAlterado = null;
+		try {
+			usuarioAlterado = UsuarioBO.validaUsuario(usuario);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		if (usuarioAlterado != null) {
 			request.setAttribute("usuario", null);
