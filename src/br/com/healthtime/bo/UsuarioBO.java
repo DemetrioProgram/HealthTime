@@ -52,4 +52,20 @@ public class UsuarioBO {
 		
 	}
 
+	public static Usuario validaUsuario(Usuario usuario) throws Exception {
+		
+		Usuario objUsuario = UsuarioDAO.doLogin(usuario.getCpf());
+		
+		if (objUsuario.getCodigo() == usuario.getCodigo()) 
+		{
+			throw new Exception("Não é possível alterar o tipo de usuario quando o tipo selecionado já é o mesmo do cadastro");
+		}
+		
+		return UsuarioDAO.validaUsuario(usuario);
+		
+		
+	}
+	
+	
+
 }

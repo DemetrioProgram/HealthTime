@@ -29,21 +29,23 @@
 					<h3 id="titulo" align="center">Valide o Usuário</h3>
 					<table id="tblCadastro" align="center">
 
+					
+					
 						<tr>
 							<td align="right">
 								<label class="fonte">CPF:</label>
 							</td>
 							
 							<td align="left">
-								<input type="text" name="txtNuCpf" value="<%= usuario.getCpf() %>" required />
+								<input type="text" name="txtNuCpf"  />
 							</td>
 							<td align="left">
 							<input type="submit" value="Buscar Usuário" />
-							</td>
+							</td>	
 						</tr>
 						
 						<% if(usuario != null) { %>
-						
+
 						<tr>
 							<td align="right"><label class="fonte">Nome:</label></td>
 							<td align="left">

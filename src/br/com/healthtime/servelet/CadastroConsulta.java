@@ -3,6 +3,7 @@ package br.com.healthtime.servelet;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -26,12 +27,14 @@ public class CadastroConsulta extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+	List<Usuario> medicos;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
     public CadastroConsulta() {
         super();
+        listarMedicos();
         // TODO Auto-generated constructor stub
     }
 
@@ -41,19 +44,28 @@ public class CadastroConsulta extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		 
+		
+		if (medicos != null)
+		{
+			request.setAttribute("medicos", medicos);
+			RequestDispatcher rd = request.getRequestDispatcher("CadastroConsulta.jsp");
+			rd.forward(request, response);
+		}	
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		// TODO Auto-generated method stub
 		processRequest(request, response);
 	}
 	
 	private void validaDadosRecebidos(HttpServletRequest req) throws ServletException {
 
-		// Cadastrar Usuario
+	
 
 		String dtConsulta = req.getParameter("txtDtConsulta");
 		String horario = req.getParameter("cbxHorario");
@@ -93,7 +105,10 @@ public class CadastroConsulta extends HttpServlet {
 	
 private void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+	
+	
 		try {
+			System.out.println("teste");
 			validaDadosRecebidos(req);
 			RequestDispatcher rd = req.getRequestDispatcher("Login.jsp");
 			rd.forward(req, resp);
@@ -104,4 +119,14 @@ private void processRequest(HttpServletRequest req, HttpServletResponse resp) th
 		}
 	
 	}
+
+
+
+
+  public void listarMedicos() {
+	  
+	  medicos = UsuarioDAO.listarMedicos(2);
+	 
+  }
+
 }

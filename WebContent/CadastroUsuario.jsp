@@ -39,7 +39,7 @@
 						<tr>
 							<td align="right"><label class="fonte">Data
 									Nascimento:</label></td>
-							<td align="left"><input type="text" name="txtDtNascimento" id="txtDtNascimento"
+							<td align="left"><input type="text" name="txtDtNascimento" id="data"
 								required /></td>
 						</tr>
 
@@ -85,7 +85,7 @@
 						<tr>
 							<td align="right"><label class="fonte">Tel. Contato
 									2:</label></td>
-							<td align="left"><input type="text" name="txtNuContato2" /></td>
+							<td align="left"><input type="text" id="telefone2" name="txtNuContato2" /></td>
 						</tr>
 
 						<tr>
@@ -129,7 +129,7 @@
 
 						<tr>
 							<td align="right"><label class="fonte">CEP:</label></td>
-							<td align="left"><input type="text" name="txtCep" required /></td>
+							<td align="left"><input type="text" id="cep" name="txtCep" required /></td>
 						</tr>
 
 						<tr>
@@ -141,6 +141,9 @@
 						jQuery(function($) {
 							$("#cpf").mask("999.999.999-99");
 							$("#telefone").mask("(999) 99999-9999");
+							$("#telefone2").mask("(999) 99999-9999");
+							$("#cep").mask("99999-999");
+							$("#data").mask("99/99/9999");
 						});
 					</script>
 
