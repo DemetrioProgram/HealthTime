@@ -111,7 +111,7 @@ public class UsuarioDAO {
 			return usuario;
 
 		} catch (Exception e) {
-			System.out.println("Erro doLogin");
+			System.out.println("Erro doLogin Usuario");
 			e.printStackTrace();
 			return null;
 		} finally {

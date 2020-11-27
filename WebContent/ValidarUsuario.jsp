@@ -147,6 +147,7 @@
 							<td align="right"><label>Tipo de Usuário:</label></td>
 							<td>
 							<select id="comboUsuario" name="comboUsuario" align="left" > 
+								<option value="">Selecione</option>
 								<option value="1">Paciente</option>
 								<option value="2">Médico</option>
 								<option value="3">Funcionário</option>

@@ -14,6 +14,8 @@
 <body>
 
 	<%@include file="NavBar.jsp" %>
+	
+	<% %>
 
 
 </body>

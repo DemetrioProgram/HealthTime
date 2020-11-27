@@ -1,7 +1,6 @@
 package br.com.healthtime.servelet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,7 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.healthtime.dao.GestorDAO;
 import br.com.healthtime.dao.UsuarioDAO;
+import br.com.healthtime.entity.Gestor;
 import br.com.healthtime.entity.Usuario;
 
 /**
@@ -47,14 +48,26 @@ public class Login extends HttpServlet {
 		
 		String cpf = request.getParameter("txtCpf");
 		
+		
+		Gestor gestor = new Gestor();
+		gestor = GestorDAO.doLogin(cpf);
+		
+		
+		if (gestor != null) {
+			RequestDispatcher rd = request.getRequestDispatcher("Principal.jsp");
+			request.getSession().setAttribute("gestor", gestor);
+			rd.forward(request, response);
+		}
+		
 		Usuario usuario = new Usuario();
 		usuario = UsuarioDAO.doLogin(cpf);
 		
 		if (usuario != null) {
-			RequestDispatcher rd = request.getRequestDispatcher("Principal.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("CadastroConsulta");
+			request.getSession().setAttribute("usuario", usuario);
 			rd.forward(request, response);
 		} else {
-			request.setAttribute("erro", new Exception("Usuário não encontrado."));
+			request.setAttribute("erro", new Exception("Usuï¿½rio nï¿½o encontrado."));
 			RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
 			rd.forward(request, response);
 		}

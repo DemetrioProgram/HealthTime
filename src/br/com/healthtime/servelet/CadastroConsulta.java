@@ -24,6 +24,7 @@ import br.com.healthtime.entity.Usuario;
 
 public class CadastroConsulta extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private Usuario usuarioLogado = new Usuario();
 	
 	DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
        
@@ -32,6 +33,7 @@ public class CadastroConsulta extends HttpServlet {
      */
     public CadastroConsulta() {
         super();
+        System.out.println("Inicial");
         // TODO Auto-generated constructor stub
     }
 
@@ -40,6 +42,7 @@ public class CadastroConsulta extends HttpServlet {
 	 */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+    	System.out.println("Inicial get");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
@@ -48,6 +51,7 @@ public class CadastroConsulta extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		System.out.println("Inicial post");
 		processRequest(request, response);
 	}
 	
@@ -59,14 +63,6 @@ public class CadastroConsulta extends HttpServlet {
 		String horario = req.getParameter("cbxHorario");
 		String nmMedico = req.getParameter("cbxMedico");
 		
-		System.out.println("hora" + horario);
-		
-		String data = dtConsulta +" " + horario;
-		
-		System.out.println("data" + data);
-		
-		
-
 			try {
 
 				Consulta consulta = new Consulta();
@@ -74,8 +70,8 @@ public class CadastroConsulta extends HttpServlet {
 				//teste
 				Usuario objUsuario = UsuarioDAO.doLogin("08168815963");
 			
-				consulta.setData(LocalDate.parse(data, format));
-				consulta.setCdFuncioanrio(objUsuario);
+				consulta.setData(LocalDate.parse(dtConsulta, format));
+				consulta.setCdFuncioanrio(usuarioLogado);
 				consulta.setCdMedico(objUsuario);
 
 				System.out.println("Consulta: "+consulta);
@@ -94,6 +90,7 @@ public class CadastroConsulta extends HttpServlet {
 private void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		try {
+			usuarioLogado = (Usuario) req.getSession().getAttribute("usuario");
 			validaDadosRecebidos(req);
 			RequestDispatcher rd = req.getRequestDispatcher("Login.jsp");
 			rd.forward(req, resp);

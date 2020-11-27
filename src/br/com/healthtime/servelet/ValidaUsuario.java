@@ -42,7 +42,7 @@ public class ValidaUsuario extends HttpServlet {
 		
 		if (usuario != null) {
 			request.setAttribute("usuario", usuario);
-			RequestDispatcher rd = request.getRequestDispatcher("ValidarUsuario.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("Login");
 			rd.forward(request, response);
 		} else {
 			
