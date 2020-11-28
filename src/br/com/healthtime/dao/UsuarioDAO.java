@@ -3,6 +3,9 @@ package br.com.healthtime.dao;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
+
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -157,17 +160,23 @@ public class UsuarioDAO {
 		try {
 			transaction = session.beginTransaction();
 
-			Criteria query = session.createCriteria(Usuario.class);
-			List<Usuario> medicos = (List<Usuario>) query.add(Restrictions.eqOrIsNull("codigo", codigo)).uniqueResult();
+			//Query query = session.createQuery("Select * from usuario where codigo =" + codigo);
+			//List<Usuario> medicos = (List<Usuario>) query;
+			
+			TypedQuery<Usuario> findAllQuery = session.createQuery("from Usuario where codigo="+codigo, Usuario.class);	
+			
+			
+			
+			List<Usuario> medicos = findAllQuery.getResultList();
 
-			System.out.println("Usuario" + medicos);
+			System.out.println("Usuario" + medicos.size());
 
 			transaction.commit();
 
 			return medicos;
 
 		} catch (Exception e) {
-			System.out.println("Erro doLogin");
+			System.out.println("Erro doListarMedico");
 			e.printStackTrace();
 			return null;
 		} finally {

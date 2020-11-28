@@ -46,30 +46,31 @@ public class ValidaUsuario extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("Login");
 			rd.forward(request, response);
 		} else {
+			String tipoDeUsuario = request.getParameter("comboUsuario");
 			
-		}
+			if (tipoDeUsuario != null) {
+				usuario.setCodigo(Integer.parseInt(tipoDeUsuario));
+				System.out.println("tipoDeUsuario: "+tipoDeUsuario);
+				
+				Usuario usuarioAlterado = null; 
+				try {
+					usuarioAlterado = UsuarioBO.validaUsuario(usuario);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				if (usuarioAlterado != null) {
+					request.setAttribute("usuario", null);
+					//RequestDispatcher rd = request.getRequestDispatcher("ValidarUsuario.jsp");
+					//rd.forward(request, response);
+					response.sendRedirect("ValidarUsuario");
+			}
 
-		String tipoDeUsuario = request.getParameter("comboUsuario");
-		usuario.setCodigo(Integer.parseInt(tipoDeUsuario));
-		System.out.println("tipoDeUsuario: "+tipoDeUsuario);
-		
-		Usuario usuarioAlterado = null;
-		try {
-			usuarioAlterado = UsuarioBO.validaUsuario(usuario);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			}
 		}
 		
-		if (usuarioAlterado != null) {
-			request.setAttribute("usuario", null);
-			RequestDispatcher rd = request.getRequestDispatcher("ValidarUsuario.jsp");
-			rd.forward(request, response);
-		} else {
 			
-		}
-
-		
 	}
 
 	/**
