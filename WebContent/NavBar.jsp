@@ -4,18 +4,42 @@
 <header>
 
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		
 		<a class="navbar-brand" href="#">Health Time</a>
+		
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
 			aria-expanded="false" aria-label="Toggle navigation">
+			
 			<span class="navbar-toggler-icon"></span>
+			
 		</button>
+		
 		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+		
 			<div class="navbar-nav">
-				<a class="nav-link active" href="Principal.jsp">Inicio <span
-					class="sr-only">(current)</span></a> <a class="nav-link"
-					href="cadastrarConsulta.xhtml">Agendar Consulta</a> <a
-					class="nav-link" href="#">Editar Consulta</a>
+				
+				<a class="nav-link active" href="Principal.jsp">
+					Inicio 
+				<span class="sr-only">(current)</span>
+				</a> 
+					
+				<a class="nav-link"	href="CadastroConsulta.jsp">
+					Agendar Consulta
+				</a> 
+					
+				<a class="nav-link" href="#">
+					Editar Consulta
+				</a>
+				
+				<a class="nav-link" href="ValidarUsuario.jsp">
+					Validar Usuário
+				</a>
+				
+				<a class="nav-link" href="CadastroUsuario.jsp">
+					Cadastro Usuário
+				</a>
+				
 			</div>
 		</div>
 
