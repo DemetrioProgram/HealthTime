@@ -3,6 +3,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <title>Cadastrar Usuario</title>
 <link rel="stylesheet"
@@ -96,6 +98,23 @@
 						<tr>
 							<td align="right"><label class="fonte">Número SUS:</label></td>
 							<td align="left"><input type="text" name="txtNuSus" /></td>
+						</tr>
+						
+						<tr>
+						<td align="right"><label class="fonte">Unidade SUS:</label></td>
+							<td>
+							
+								<select id="cbxUnudade" name="cbxUnidade" required>
+									<option value="">Selecione</option>
+							
+										<c:forEach var="unidade" items="${unidades}">
+											<option value="${unidade.cdUnidade}">
+												${unidade.nmunidade}
+											</option>
+										</c:forEach>
+							
+								</select>
+							</td>
 						</tr>
 
 						<tr>

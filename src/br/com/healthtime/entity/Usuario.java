@@ -58,14 +58,38 @@ public class Usuario implements Serializable {
 	@JoinColumn(name = "cdEndereco", referencedColumnName = "cdEndereco", nullable = false)
 	private Endereco endereco;
 	
+	
 	public Usuario() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
+
+	public Usuario(String nome, String nuContatoPrincipal, String nuContatoSecundario, LocalDate dtnascimento,
+			String cpf, String sus, String email, String nomeMae, Integer codigo, boolean flPne, boolean flIdoso,
+			boolean flGestante, boolean flMenorIdade, UnidadeSus cdUnidade, Endereco endereco) {
+		super();
+		this.nome = nome;
+		this.nuContatoPrincipal = nuContatoPrincipal;
+		this.nuContatoSecundario = nuContatoSecundario;
+		this.dtnascimento = dtnascimento;
+		this.cpf = cpf;
+		this.sus = sus;
+		this.email = email;
+		this.nomeMae = nomeMae;
+		this.codigo = codigo;
+		this.flPne = flPne;
+		this.flIdoso = flIdoso;
+		this.flGestante = flGestante;
+		this.flMenorIdade = flMenorIdade;
+		this.cdUnidade = cdUnidade;
+		this.endereco = endereco;
+	}
+
+
 	public Usuario(Long cdUsuario, String nome, String nuContatoPrincipal, String nuContatoSecundario,
 			LocalDate dtnascimento, String cpf, String sus, String email, String nomeMae, Integer codigo, boolean flPne,
-			boolean flIdoso, boolean flGestante, boolean flMenorIdade, Endereco endereco) {
+			boolean flIdoso, boolean flGestante, boolean flMenorIdade, UnidadeSus cdUnidade, Endereco endereco) {
 		super();
 		this.cdUsuario = cdUsuario;
 		this.nome = nome;
@@ -81,148 +105,175 @@ public class Usuario implements Serializable {
 		this.flIdoso = flIdoso;
 		this.flGestante = flGestante;
 		this.flMenorIdade = flMenorIdade;
+		this.cdUnidade = cdUnidade;
 		this.endereco = endereco;
 	}
 
-	public Usuario(String nome, String nuContatoPrincipal, String nuContatoSecundario, LocalDate dtnascimento, String cpf,
-			String sus, String email, String nomeMae, Integer codigo, boolean flPne, boolean flIdoso,
-			boolean flGestante, boolean flMenorIdade, Endereco endereco) {
-		super();
-		this.nome = nome;
-		this.nuContatoPrincipal = nuContatoPrincipal;
-		this.nuContatoSecundario = nuContatoSecundario;
-		this.dtnascimento = dtnascimento;
-		this.cpf = cpf;
-		this.sus = sus;
-		this.email = email;
-		this.nomeMae = nomeMae;
-		this.codigo = codigo;
-		this.flPne = flPne;
-		this.flIdoso = flIdoso;
-		this.flGestante = flGestante;
-		this.flMenorIdade = flMenorIdade;
-		this.endereco = endereco;
-	}
 
 	public Long getCdUsuario() {
 		return cdUsuario;
 	}
 
+
 	public void setCdUsuario(Long cdUsuario) {
 		this.cdUsuario = cdUsuario;
 	}
+
 
 	public String getNome() {
 		return nome;
 	}
 
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
 
 	public String getNuContatoPrincipal() {
 		return nuContatoPrincipal;
 	}
 
+
 	public void setNuContatoPrincipal(String nuContatoPrincipal) {
 		this.nuContatoPrincipal = nuContatoPrincipal;
 	}
+
 
 	public String getNuContatoSecundario() {
 		return nuContatoSecundario;
 	}
 
+
 	public void setNuContatoSecundario(String nuContatoSecundario) {
-		this.nuContatoSecundario = nuContatoSecundario == null ? "" : nuContatoSecundario;
+		this.nuContatoSecundario = nuContatoSecundario;
 	}
+
 
 	public LocalDate getDtnascimento() {
 		return dtnascimento;
 	}
 
+
 	public void setDtnascimento(LocalDate dtnascimento) {
 		this.dtnascimento = dtnascimento;
 	}
+
 
 	public String getCpf() {
 		return cpf;
 	}
 
+
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
+
 
 	public String getSus() {
 		return sus;
 	}
 
+
 	public void setSus(String sus) {
 		this.sus = sus;
 	}
+
 
 	public String getEmail() {
 		return email;
 	}
 
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 
 	public String getNomeMae() {
 		return nomeMae;
 	}
 
+
 	public void setNomeMae(String nomeMae) {
 		this.nomeMae = nomeMae;
 	}
+
 
 	public Integer getCodigo() {
 		return codigo;
 	}
 
+
 	public void setCodigo(Integer codigo) {
 		this.codigo = codigo;
 	}
+
 
 	public boolean isFlPne() {
 		return flPne;
 	}
 
+
 	public void setFlPne(boolean flPne) {
 		this.flPne = flPne;
 	}
+
 
 	public boolean isFlIdoso() {
 		return flIdoso;
 	}
 
+
 	public void setFlIdoso(boolean flIdoso) {
 		this.flIdoso = flIdoso;
 	}
+
 
 	public boolean isFlGestante() {
 		return flGestante;
 	}
 
+
 	public void setFlGestante(boolean flGestante) {
 		this.flGestante = flGestante;
 	}
+
 
 	public boolean isFlMenorIdade() {
 		return flMenorIdade;
 	}
 
+
 	public void setFlMenorIdade(boolean flMenorIdade) {
 		this.flMenorIdade = flMenorIdade;
 	}
+
+
+	public UnidadeSus getCdUnidade() {
+		return cdUnidade;
+	}
+
+
+	public void setCdUnidade(UnidadeSus cdUnidade) {
+		this.cdUnidade = cdUnidade;
+	}
+
 
 	public Endereco getEndereco() {
 		return endereco;
 	}
 
+
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
+
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 
 	@Override
 	public String toString() {
@@ -230,6 +281,10 @@ public class Usuario implements Serializable {
 				+ ", nuContatoSecundario=" + nuContatoSecundario + ", dtnascimento=" + dtnascimento + ", cpf=" + cpf
 				+ ", sus=" + sus + ", email=" + email + ", nomeMae=" + nomeMae + ", codigo=" + codigo + ", flPne="
 				+ flPne + ", flIdoso=" + flIdoso + ", flGestante=" + flGestante + ", flMenorIdade=" + flMenorIdade
-				+ ", endereco=" + endereco + "]";
-	}	
+				+ ", cdUnidade=" + cdUnidade + ", endereco=" + endereco + "]";
+	}
+	
+	
+	
+	
 }

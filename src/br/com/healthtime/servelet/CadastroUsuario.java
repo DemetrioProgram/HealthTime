@@ -3,6 +3,7 @@ package br.com.healthtime.servelet;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,7 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.healthtime.bo.UsuarioBO;
+import br.com.healthtime.dao.UnidadeDAO;
 import br.com.healthtime.entity.Endereco;
+import br.com.healthtime.entity.UnidadeSus;
 import br.com.healthtime.entity.Usuario;
 
 
@@ -23,6 +26,7 @@ public class CadastroUsuario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+	List<UnidadeSus> unidades;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -38,6 +42,11 @@ public class CadastroUsuario extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		listarUnidades();
+		request.setAttribute("unidades", unidades);
+		RequestDispatcher rd = request.getRequestDispatcher("CadastroUsuario.jsp");
+		rd.forward(request, response);
+		
 	}
 
 	/**
@@ -45,6 +54,7 @@ public class CadastroUsuario extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		listarUnidades();
 		processRequest(request, response);
 	}
 	
@@ -67,6 +77,13 @@ public class CadastroUsuario extends HttpServlet {
 		String nuContato = req.getParameter("txtNuContato");
 		String nuContato2 = req.getParameter("txtNuContato2");
 		String nuSus = req.getParameter("txtNuSus");
+		
+		String NmUnidade = req.getParameter("cbxUnidade");
+		int cdUnidade = Integer.parseInt(NmUnidade);
+		
+		UnidadeSus unidade = UnidadeDAO.recuperaUnidade(cdUnidade);
+		
+		
 		String nmRua = req.getParameter("txtNmRua");
 		String numero = req.getParameter("txtNumero");
 		String nmBairro = req.getParameter("txtBairro");
@@ -96,6 +113,7 @@ public class CadastroUsuario extends HttpServlet {
 				usuario.setFlMenorIdade(Boolean.parseBoolean(flMenorIdade));
 				usuario.setFlPne(Boolean.parseBoolean(flPne));
 				usuario.setSus(nuSus);
+				usuario.setCdUnidade(unidade);
 				
 				Endereco endereco = new Endereco();
 				endereco.setBairro(nmBairro);
@@ -131,5 +149,10 @@ private void processRequest(HttpServletRequest req, HttpServletResponse resp) th
 			rd.forward(req, resp);
 		}
 	
+	}
+
+	private void listarUnidades() {
+		
+		unidades = UnidadeDAO.listarUnidades();
 	}
 }

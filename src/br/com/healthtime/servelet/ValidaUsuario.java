@@ -18,6 +18,9 @@ import br.com.healthtime.entity.Usuario;
  */
 public class ValidaUsuario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	Usuario usuario;
+	Usuario usuarioAlterado;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -37,40 +40,38 @@ public class ValidaUsuario extends HttpServlet {
 		String cpf = request.getParameter("txtNuCpf");
 		System.out.println("CPF: "+cpf);
 		
-		Usuario usuario = new Usuario();
+		
 		usuario = UsuarioDAO.doLogin(cpf);
 		System.out.println(usuario);
 		
-		if (usuario != null) {
+		if (usuario != null) 
+		{
 			request.setAttribute("usuario", usuario);
-			RequestDispatcher rd = request.getRequestDispatcher("Login");
+			RequestDispatcher rd = request.getRequestDispatcher("ValidarUsuario.jsp");
 			rd.forward(request, response);
-		} else {
-			String tipoDeUsuario = request.getParameter("comboUsuario");
 			
-			if (tipoDeUsuario != null) {
-				usuario.setCodigo(Integer.parseInt(tipoDeUsuario));
-				System.out.println("tipoDeUsuario: "+tipoDeUsuario);
-				
-				Usuario usuarioAlterado = null; 
-				try {
-					usuarioAlterado = UsuarioBO.validaUsuario(usuario);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
-				if (usuarioAlterado != null) {
-					request.setAttribute("usuario", null);
-					//RequestDispatcher rd = request.getRequestDispatcher("ValidarUsuario.jsp");
-					//rd.forward(request, response);
-					response.sendRedirect("ValidarUsuario");
-			}
-
-			}
+		} 
+		
+		if (usuarioAlterado != null) {
+			request.setAttribute("usuario", null);
+			//RequestDispatcher rd = request.getRequestDispatcher("ValidarUsuario.jsp");
+			//rd.forward(request, response);
+			response.sendRedirect("ValidarUsuario");			
 		}
+	
+			
+	}	
+			
 		
 			
+	
+
+	private void validaDadosRecebidos(HttpServletRequest request) {
+		// TODO Auto-generated method stub
+		String tipoDeUsuario = request.getParameter("comboUsuario");		
+		usuario.setCodigo(Integer.parseInt(tipoDeUsuario));
+		
+		
 	}
 
 	/**
@@ -78,6 +79,16 @@ public class ValidaUsuario extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		try {
+			validaDadosRecebidos(request);
+			usuarioAlterado = UsuarioBO.validaUsuario(usuario);
+			RequestDispatcher rd = request.getRequestDispatcher("ValidarUsuario.jsp");
+			rd.forward(request, response);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		doGet(request, response);
 	}
 

@@ -38,16 +38,16 @@ public class Consulta implements Serializable {
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "cdArquivo", referencedColumnName = "cdArquivo", nullable = true)
 	private Receita cdArquivo;
-	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "cdPaciente", referencedColumnName = "cdUsuario", nullable = true)
 	private Usuario cdPaciente;
-	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "cdMedico", referencedColumnName = "cdUsuario", nullable = false)
 	private Usuario cdMedico;
-	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "cdFuncioanrio", referencedColumnName = "cdUsuario", nullable = false)
 	private Usuario cdFuncioanrio;
-	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "cdUnidade", referencedColumnName = "cdUnidade", nullable = false)
 	private UnidadeSus cdUnidade;
 
@@ -57,7 +57,7 @@ public class Consulta implements Serializable {
 	}
 
 	public Consulta(Integer cdConsulta, LocalDate data, String horario, boolean retorno, boolean flvacina,
-			String deprediagnostico, Receita cdArquivo, Usuario cdPaciente, Usuario cdMedico, Usuario cdFuncioanrio) {
+			String deprediagnostico, Receita cdArquivo, Usuario cdPaciente, Usuario cdMedico, Usuario cdFuncioanrio, UnidadeSus cdUnidade) {
 		super();
 		this.cdConsulta = cdConsulta;
 		this.data = data;
@@ -69,10 +69,11 @@ public class Consulta implements Serializable {
 		this.cdPaciente = cdPaciente;
 		this.cdMedico = cdMedico;
 		this.cdFuncioanrio = cdFuncioanrio;
+		this.cdUnidade = cdUnidade;
 	}
 
 	public Consulta(LocalDate data, String horario, boolean retorno, boolean flvacina, String deprediagnostico,
-			Receita cdArquivo, Usuario cdPaciente, Usuario cdMedico, Usuario cdFuncioanrio) {
+			Receita cdArquivo, Usuario cdPaciente, Usuario cdMedico, Usuario cdFuncioanrio, UnidadeSus cdUnidade) {
 		super();
 		this.data = data;
 		this.horario = horario;
@@ -83,6 +84,7 @@ public class Consulta implements Serializable {
 		this.cdPaciente = cdPaciente;
 		this.cdMedico = cdMedico;
 		this.cdFuncioanrio = cdFuncioanrio;
+		this.cdUnidade = cdUnidade;
 	}
 
 	public Integer getCdConsulta() {
@@ -168,11 +170,24 @@ public class Consulta implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+	
+	
+
+	public UnidadeSus getCdUnidade() {
+		return cdUnidade;
+	}
+
+	public void setCdUnidade(UnidadeSus cdUnidade) {
+		this.cdUnidade = cdUnidade;
+	}
 
 	@Override
 	public String toString() {
 		return "Consulta [cdConsulta=" + cdConsulta + ", data=" + data + ", horario=" + horario + ", retorno=" + retorno
 				+ ", flvacina=" + flvacina + ", deprediagnostico=" + deprediagnostico + ", cdArquivo=" + cdArquivo
-				+ ", cdPaciente=" + cdPaciente + ", cdMedico=" + cdMedico + ", cdFuncioanrio=" + cdFuncioanrio + "]";
+				+ ", cdPaciente=" + cdPaciente + ", cdMedico=" + cdMedico + ", cdFuncioanrio=" + cdFuncioanrio
+				+ ", cdUnidade=" + cdUnidade + "]";
 	}
+
+	
 }

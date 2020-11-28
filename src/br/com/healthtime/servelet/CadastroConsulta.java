@@ -13,8 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.healthtime.bo.ConsultaBO;
 import br.com.healthtime.bo.UsuarioBO;
+import br.com.healthtime.dao.UnidadeDAO;
 import br.com.healthtime.dao.UsuarioDAO;
 import br.com.healthtime.entity.Consulta;
+import br.com.healthtime.entity.UnidadeSus;
 import br.com.healthtime.entity.Usuario;
 
 /**
@@ -43,7 +45,7 @@ public class CadastroConsulta extends HttpServlet {
 		// TODO Auto-generated method stub
     	System.out.println("Inicial get");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		 
+		 doPost(request, response);
 		
 	}
 
@@ -57,7 +59,9 @@ public class CadastroConsulta extends HttpServlet {
 		
 		medicos = UsuarioDAO.listarMedicos(2);
 		
-		if (medicos != null)
+		System.out.println("medico teste " +medicos);
+		
+		if (medicos != null || medicos.size() > 0)
 		{
 			
 			usuarioLogado = (Usuario) request.getSession().getAttribute("usuario");
@@ -88,9 +92,14 @@ public class CadastroConsulta extends HttpServlet {
 		String horario = req.getParameter("cbxHorario");
 		String Medico = req.getParameter("cbxMedico");
 		
-		int cdMedico = Integer.parseInt(Medico);
+		int cdMedico = Integer.parseInt(Medico);	
+		Usuario objMedico = UsuarioBO.recuperarUsuario(cdMedico);	
 		
-		Usuario objMedico = UsuarioBO.recuperarUsuario(cdMedico);
+		String f = usuarioLogado.getCdUsuario().toString();		
+		Usuario objFuncionario = UsuarioBO.recuperarUsuario(Integer.parseInt(f));	
+		
+		int u = usuarioLogado.getCdUnidade().getCdUnidade();
+		UnidadeSus unidade = UnidadeDAO.recuperaUnidade(u);
 		
 		System.out.println("medico" + objMedico);
 		
@@ -101,8 +110,9 @@ public class CadastroConsulta extends HttpServlet {
 				Consulta consulta = new Consulta();
 				consulta.setData(LocalDate.parse(dtConsulta, format));
 				consulta.setHorario(horario);
-				consulta.setCdFuncioanrio(usuarioLogado);
+				consulta.setCdFuncioanrio(objFuncionario);
 				consulta.setCdMedico(objMedico);
+				consulta.setCdUnidade(unidade);
 
 				System.out.println("Consulta: "+consulta);
 				

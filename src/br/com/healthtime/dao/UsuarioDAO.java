@@ -160,20 +160,21 @@ public class UsuarioDAO {
 		try {
 			transaction = session.beginTransaction();
 
-			//Query query = session.createQuery("Select * from usuario where codigo =" + codigo);
-			//List<Usuario> medicos = (List<Usuario>) query;
-			
 			TypedQuery<Usuario> findAllQuery = session.createQuery("from Usuario where codigo="+codigo, Usuario.class);	
-			
-			
+						
 			
 			List<Usuario> medicos = findAllQuery.getResultList();
 
 			System.out.println("Usuario" + medicos.size());
 
 			transaction.commit();
-
-			return medicos;
+			
+			if (medicos.size() > 0) {
+				return medicos;
+			}
+			else {
+				return null;
+			}
 
 		} catch (Exception e) {
 			System.out.println("Erro doListarMedico");
