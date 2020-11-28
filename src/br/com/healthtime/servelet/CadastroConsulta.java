@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.healthtime.bo.ConsultaBO;
+import br.com.healthtime.bo.UsuarioBO;
 import br.com.healthtime.dao.UsuarioDAO;
 import br.com.healthtime.entity.Consulta;
 import br.com.healthtime.entity.Usuario;
@@ -63,10 +64,18 @@ public class CadastroConsulta extends HttpServlet {
 			System.out.println("lista" + medicos.get(0).getNome());
 			request.setAttribute("medicos", medicos);
 			
-			System.out.println("user " + usuarioLogado.getNome());
-			validaDadosRecebidos(request);
-			RequestDispatcher rd = request.getRequestDispatcher("CadastroConsulta.jsp");
-			rd.forward(request, response);
+			
+			try {
+				validaDadosRecebidos(request);
+				RequestDispatcher rd = request.getRequestDispatcher("CadastroConsulta.jsp");
+				rd.forward(request, response);
+
+			} catch (Exception e) {
+				RequestDispatcher rd = request.getRequestDispatcher("CadastroConsulta.jsp");
+				rd.forward(request, response);
+			}
+			
+			
 		}	
 		
 	}
@@ -77,20 +86,23 @@ public class CadastroConsulta extends HttpServlet {
 
 		String dtConsulta = req.getParameter("txtDtConsulta");
 		String horario = req.getParameter("cbxHorario");
-		String nmMedico = req.getParameter("cbxMedico");
+		String Medico = req.getParameter("cbxMedico");
 		
+		int cdMedico = Integer.parseInt(Medico);
 		
+		Usuario objMedico = UsuarioBO.recuperarUsuario(cdMedico);
+		
+		System.out.println("medico" + objMedico);
 		
 			try {
+				
+				
 
 				Consulta consulta = new Consulta();
-				
-				//teste
-				Usuario objUsuario = UsuarioDAO.doLogin("08168815963");
-			
 				consulta.setData(LocalDate.parse(dtConsulta, format));
+				consulta.setHorario(horario);
 				consulta.setCdFuncioanrio(usuarioLogado);
-				consulta.setCdMedico(objUsuario);
+				consulta.setCdMedico(objMedico);
 
 				System.out.println("Consulta: "+consulta);
 				

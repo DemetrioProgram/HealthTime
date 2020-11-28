@@ -56,7 +56,7 @@ public class Login extends HttpServlet {
 		if (gestor != null) {
 			RequestDispatcher rd = request.getRequestDispatcher("Principal.jsp");
 			request.getSession().setAttribute("gestor", gestor);
-			rd.forward(request, response);
+			rd.forward(request, response); 
 		}
 		
 		Usuario usuario = new Usuario();

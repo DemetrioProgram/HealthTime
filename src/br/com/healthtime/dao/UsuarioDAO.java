@@ -186,4 +186,35 @@ public class UsuarioDAO {
 		}
 	}
 
+	public static Usuario recuperarUsuario(int cdMedico) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+
+		Transaction transaction = null;
+
+		try {
+			transaction = session.beginTransaction();	
+			
+			TypedQuery<Usuario> findAllQuery = session.createQuery("from Usuario where cdUsuario="+cdMedico, Usuario.class);	
+			
+			
+			
+			Usuario medico = findAllQuery.getSingleResult();
+
+			System.out.println("Usuario" + medico);
+
+			transaction.commit();
+
+			return medico;
+
+		} catch (Exception e) {
+			System.out.println("Erro doListarMedico");
+			e.printStackTrace();
+			return null;
+		} finally {
+			if (session != null && session.isOpen()) {
+				session.close();
+			}
+		}
+	}
+
 }

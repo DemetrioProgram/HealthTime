@@ -128,5 +128,12 @@ public class UsuarioBO {
             }
         }
 
+	public static Usuario recuperarUsuario(int cdMedico) {
+		
+		Usuario objMedico = UsuarioDAO.recuperarUsuario(cdMedico);
+		
+		return objMedico;
+	}
+
 
 }
