@@ -5,6 +5,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <title>Cadastrar Usuario</title>
+<link rel="stylesheet"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+		crossorigin="anonymous"/>
 <script
 	src="resources/js/jquery-1.5.2.min.js"></script>
 	<script src="resources/js/jquery.maskedinput-1.3.min.js"></script>
@@ -13,6 +17,7 @@
 
 <body>
 
+	<%@include file="NavBar.jsp" %>
 
 	<form action="CadastroUsuario" method="post">
 

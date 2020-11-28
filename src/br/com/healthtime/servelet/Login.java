@@ -63,7 +63,7 @@ public class Login extends HttpServlet {
 		usuario = UsuarioDAO.doLogin(cpf);
 		
 		if (usuario != null) {
-			RequestDispatcher rd = request.getRequestDispatcher("CadastroConsulta");
+			RequestDispatcher rd = request.getRequestDispatcher("Principal.jsp");
 			request.getSession().setAttribute("usuario", usuario);
 			rd.forward(request, response);
 		} else {
