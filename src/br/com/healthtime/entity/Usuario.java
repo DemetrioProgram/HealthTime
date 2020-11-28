@@ -52,6 +52,9 @@ public class Usuario implements Serializable {
 	@Column(name="flmenoridade", nullable = true)
 	private boolean flMenorIdade;
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "cdUnidade", referencedColumnName = "cdUnidade", nullable = false)
+	private UnidadeSus cdUnidade;
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "cdEndereco", referencedColumnName = "cdEndereco", nullable = false)
 	private Endereco endereco;
 	

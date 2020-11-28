@@ -47,6 +47,9 @@ public class Consulta implements Serializable {
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "cdFuncioanrio", referencedColumnName = "cdUsuario", nullable = false)
 	private Usuario cdFuncioanrio;
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "cdUnidade", referencedColumnName = "cdUnidade", nullable = false)
+	private UnidadeSus cdUnidade;
 
 	public Consulta() {
 		super();
