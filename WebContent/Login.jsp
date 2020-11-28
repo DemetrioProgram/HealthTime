@@ -6,6 +6,10 @@
 <meta charset="ISO-8859-1">
 <link rel="stylesheet" type="text/css"
 	href="resources/css/bootstrap.css">
+	
+	<script
+	src="resources/js/jquery-1.5.2.min.js"></script>
+	<script src="resources/js/jquery.maskedinput-1.3.min.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -22,7 +26,7 @@
 					<div class="form-group ls-login-user">
 						<label>CPF</label> 
 							<input
-							class="form-control ls-login-bg-user input-lg" id="CPF"
+							class="form-control ls-login-bg-user input-lg" id="cpf"
 							aria-label="CPF" name="txtCpf" placeholder="CPF" type="text">
 					</div>
 
@@ -43,6 +47,13 @@
 			</form>
 		</div>
 	</div>
+	
+	<script>
+						jQuery(function($) {
+							$("#cpf").mask("999.999.999-99");
+							
+						});
+					</script>
 
 </body>
 </html>

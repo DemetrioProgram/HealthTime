@@ -47,30 +47,39 @@ public class Login extends HttpServlet {
 		
 		
 		String cpf = request.getParameter("txtCpf");
+		cpf = cpf.replace(".", "").replace("-", "");
 		
 		
 		Gestor gestor = new Gestor();
 		gestor = GestorDAO.doLogin(cpf);
 		
+		Usuario usuario = new Usuario();
+		usuario = UsuarioDAO.doLogin(cpf);
 		
-		if (gestor != null) {
+		
+		if (gestor != null)
+		{
 			RequestDispatcher rd = request.getRequestDispatcher("Principal.jsp");
 			request.getSession().setAttribute("gestor", gestor);
 			rd.forward(request, response); 
 		}
 		
-		Usuario usuario = new Usuario();
-		usuario = UsuarioDAO.doLogin(cpf);
-		
-		if (usuario != null) {
-			RequestDispatcher rd = request.getRequestDispatcher("Principal.jsp");
-			request.getSession().setAttribute("usuario", usuario);
-			rd.forward(request, response);
-		} else {
-			request.setAttribute("erro", new Exception("Usu�rio n�o encontrado."));
-			RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
-			rd.forward(request, response);
+		if (usuario != null)
+		{
+				RequestDispatcher rd = request.getRequestDispatcher("CadastroConsulta");
+				request.getSession().setAttribute("usuario", usuario);
+				rd.forward(request, response);
 		}
+
+		 if (usuario == null && gestor == null) 
+		 {
+			 request.setAttribute("erro", new Exception("Usu�rio n�o encontrado."));
+				RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
+				rd.forward(request, response);
+		 }
+		 
+			
+		
 				
 	}
 
