@@ -1,25 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <title>Cadastrar Usuario</title>
+<link rel="stylesheet" type="text/css" href="resources/css/style.css">
 <link rel="stylesheet"
-		href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-		crossorigin="anonymous"/>
-<script
-	src="resources/js/jquery-1.5.2.min.js"></script>
-	<script src="resources/js/jquery.maskedinput-1.3.min.js"></script>
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous" />
+<script src="resources/js/combo.js"></script>
+<script src="resources/js/jquery-1.5.2.min.js"></script>
+<script src="resources/js/jquery.maskedinput-1.3.min.js"></script>
 </head>
 
 
-<body>
+<body onload="combo()">
 
-	<%@include file="NavBar.jsp" %>
+	<%@include file="NavBar.jsp"%>
 
 	<form action="CadastroUsuario" method="post">
 
@@ -46,35 +47,40 @@
 						<tr>
 							<td align="right"><label class="fonte">Data
 									Nascimento:</label></td>
-							<td align="left"><input type="text" name="txtDtNascimento" id="data"
-								required /></td>
+							<td align="left"><input type="text" name="txtDtNascimento"
+								id="data" required /></td>
 						</tr>
 
 						<tr>
 							<td align="right"><label class="fonte">E-mail:</label></td>
-							<td align="left"><input type="text" name="txtEmail" required /></td>
+							<td align="left"><input type="email" name="txtEmail"
+								required /></td>
 						</tr>
 
 						<tr>
 							<td align="right"><label class="fonte">Gestante:</label></td>
-							<td align="left"><input type="checkbox" value="true" name="flGestante" /></td>
+							<td align="left"><input type="checkbox" value="true"
+								name="flGestante" /></td>
 						</tr>
 
 						<tr>
 							<td align="right"><label class="fonte">Idoso:</label></td>
-							<td align="left"><input type="checkbox" value="true" name="flIdoso" /></td>
+							<td align="left"><input type="checkbox" value="true"
+								name="flIdoso" /></td>
 						</tr>
 
 						<tr>
 							<td align="right"><label class="fonte">Menor de
 									Idade:</label></td>
-							<td align="left"><input type="checkbox" value="true" name="flMenorIdade" /></td>
+							<td align="left"><input type="checkbox" value="true"
+								name="flMenorIdade" /></td>
 						</tr>
 
 						<tr>
 							<td align="right"><label class="fonte">Pessoa com
 									Nessecidades Especiais:</label></td>
-							<td align="left"><input type="checkbox" value="true" name="flPne" /></td>
+							<td align="left"><input type="checkbox" value="true"
+								name="flPne" /></td>
 						</tr>
 
 						<tr>
@@ -86,34 +92,36 @@
 						<tr>
 							<td align="right"><label class="fonte">Tel. Contato:</label>
 							</td>
-							<td align="left"><input type="text" id="telefone" name="txtNuContato" /></td>
+							<td align="left"><input type="text" id="telefone"
+								name="txtNuContato" /></td>
 						</tr>
 
 						<tr>
 							<td align="right"><label class="fonte">Tel. Contato
 									2:</label></td>
-							<td align="left"><input type="text" id="telefone2" name="txtNuContato2" /></td>
+							<td align="left"><input type="text" id="telefone2"
+								name="txtNuContato2" /></td>
 						</tr>
 
 						<tr>
 							<td align="right"><label class="fonte">Número SUS:</label></td>
 							<td align="left"><input type="text" name="txtNuSus" /></td>
 						</tr>
-						
+
 						<tr>
-						<td align="right"><label class="fonte">Unidade SUS:</label></td>
+							<td align="right"><label class="fonte">Unidade SUS:</label></td>
 							<td>
-							
-								<select id="cbxUnudade" name="cbxUnidade" required>
-									<option value="">Selecione</option>
-							
+								<div class="custom-select" style="width:200px;">
+									<select id="cbxUnudade" name="cbxUnidade" required>
+										<option value="">Selecione</option>
+
 										<c:forEach var="unidade" items="${unidades}">
 											<option value="${unidade.cdUnidade}">
-												${unidade.nmunidade}
-											</option>
+												${unidade.nmunidade}</option>
 										</c:forEach>
-							
-								</select>
+
+									</select>
+								</div>
 							</td>
 						</tr>
 
@@ -141,27 +149,30 @@
 
 						<tr>
 							<td align="right"><label class="fonte">UF</label></td>
-							<td><select id="cbxUf" name="cbxUf" required>
-									<option value="">Nenhuma</option>
-									<option value="SC">SC</option>
-									<option value="RS">RS</option>
-									<option value="SP">SP</option>
-									<option value="RJ">RJ</option>
-									<option value="MA">MA</option>
-							</select></td>
+							<td>
+								<div class="custom-select" style="width:200px;">
+									<select id="cbxUf" name="cbxUf" required>
+										<option value="">Nenhuma</option>
+										<option value="SC">SC</option>
+										<option value="RS">RS</option>
+										<option value="SP">SP</option>
+										<option value="RJ">RJ</option>
+										<option value="MA">MA</option>
+									</select>
+								</div>
+							</td>
 						</tr>
 
 						<tr>
 							<td align="right"><label class="fonte">CEP:</label></td>
-							<td align="left"><input type="text" id="cep" name="txtCep" required /></td>
+							<td align="left"><input type="text" id="cep" name="txtCep"
+								required /></td>
 						</tr>
 
 						<tr>
 							<td></td>
 						</tr>
-					</table>
-					
-					<script>
+					</table> <script>
 						jQuery(function($) {
 							$("#cpf").mask("999.999.999-99");
 							$("#telefone").mask("(99) 99999-9999");
