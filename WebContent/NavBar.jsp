@@ -24,12 +24,12 @@
 				<span class="sr-only">(current)</span>
 				</a> 
 					
-				<a class="nav-link"	href="CadastroConsulta.jsp">
-					Agendar Consulta
+				<a class="nav-link"	href="#">
+					Ver Consultas Disponíveis
 				</a> 
 					
-				<a class="nav-link" href="#">
-					Editar Consulta
+				<a class="nav-link" href="CadastroConsulta.jsp">
+					Agendar Consulta
 				</a>
 				
 				<a class="nav-link" href="ValidarUsuario.jsp">
