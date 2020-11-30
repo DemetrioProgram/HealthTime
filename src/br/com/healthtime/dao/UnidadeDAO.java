@@ -73,6 +73,8 @@ public class UnidadeDAO {
 			return null;
 		} finally {
 			if (session != null && session.isOpen()) {
+				//session.flush ();
+			    session.clear ();
 				session.close();
 			}
 		}

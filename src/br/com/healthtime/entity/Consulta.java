@@ -11,6 +11,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -47,8 +50,8 @@ public class Consulta implements Serializable {
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "cdFuncioanrio", referencedColumnName = "cdUsuario", nullable = false)
 	private Usuario cdFuncioanrio;
-	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "cdUnidade", referencedColumnName = "cdUnidade", nullable = false)
+	@ManyToOne
+	@JoinColumn(name = "cdUnidade", nullable = false)
 	private UnidadeSus cdUnidade;
 
 	public Consulta() {

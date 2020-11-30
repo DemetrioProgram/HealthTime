@@ -35,33 +35,31 @@ public class UnidadeSus implements Serializable {
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "cdGestor", referencedColumnName = "cdGestor", nullable = false)
 	private Gestor cdGestor;
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name = "cdConsulta")
-	private List<Consulta> consultas;
+	//@OneToMany(mappedBy = "CdConsulta",  fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	//private List<Consulta> consultas;
 	
 	public UnidadeSus() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public UnidadeSus(Integer cdUnidade, String telefone, String nmunidade, String email, Gestor cdGestor,
-			List<Consulta> consultas) {
+	public UnidadeSus(Integer cdUnidade, String telefone, String nmunidade, String email, Gestor cdGestor) {
 		super();
 		this.cdUnidade = cdUnidade;
 		this.telefone = telefone;
 		this.nmunidade = nmunidade;
 		this.email = email;
 		this.cdGestor = cdGestor;
-		this.consultas = consultas;
+		//this.consultas = consultas;
 	}
 
-	public UnidadeSus(String telefone, String nmunidade, String email, Gestor cdGestor, List<Consulta> consultas) {
+	public UnidadeSus(String telefone, String nmunidade, String email, Gestor cdGestor) {
 		super();
 		this.telefone = telefone;
 		this.nmunidade = nmunidade;
 		this.email = email;
 		this.cdGestor = cdGestor;
-		this.consultas = consultas;
+		//this.consultas = consultas;
 	}
 
 	public Integer getCdUnidade() {
@@ -104,17 +102,11 @@ public class UnidadeSus implements Serializable {
 		this.cdGestor = cdGestor;
 	}
 
-	public List<Consulta> getConsultas() {
-		return consultas;
-	}
-
-	public void setConsultas(List<Consulta> consultas) {
-		this.consultas = consultas;
-	}
+	
 
 	@Override
 	public String toString() {
 		return "UnidadeSus [cdUnidade=" + cdUnidade + ", telefone=" + telefone + ", nmunidade=" + nmunidade + ", email="
-				+ email + ", cdGestor=" + cdGestor + ", consultas=" + consultas + "]";
+				+ email + ", cdGestor=" + cdGestor + "]";
 	}	
 }

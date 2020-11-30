@@ -25,7 +25,7 @@ import br.com.healthtime.entity.Usuario;
 
 public class CadastroConsulta extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private Usuario usuarioLogado = new Usuario();
+	private Usuario usuarioLogado;
 	
 	DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 	List<Usuario> medicos;
@@ -65,6 +65,7 @@ public class CadastroConsulta extends HttpServlet {
 		{
 			
 			usuarioLogado = (Usuario) request.getSession().getAttribute("usuario");
+			//request.getSession().invalidate();
 			System.out.println("lista" + medicos.get(0).getNome());
 			request.setAttribute("medicos", medicos);
 			
@@ -75,6 +76,7 @@ public class CadastroConsulta extends HttpServlet {
 				rd.forward(request, response);
 
 			} catch (Exception e) {
+				System.out.println("errro" + e);
 				RequestDispatcher rd = request.getRequestDispatcher("CadastroConsulta.jsp");
 				rd.forward(request, response);
 			}
@@ -92,21 +94,24 @@ public class CadastroConsulta extends HttpServlet {
 		String horario = req.getParameter("cbxHorario");
 		String Medico = req.getParameter("cbxMedico");
 		
-		int cdMedico = Integer.parseInt(Medico);	
-		Usuario objMedico = UsuarioBO.recuperarUsuario(cdMedico);	
 		
-		String f = usuarioLogado.getCdUsuario().toString();		
-		Usuario objFuncionario = UsuarioBO.recuperarUsuario(Integer.parseInt(f));	
-		
-		int u = usuarioLogado.getCdUnidade().getCdUnidade();
-		UnidadeSus unidade = UnidadeDAO.recuperaUnidade(u);
-		
-		System.out.println("medico" + objMedico);
 		
 			try {
 				
 				
-
+				int cdMedico = Integer.parseInt(Medico);	
+				Usuario objMedico = UsuarioBO.recuperarUsuario(cdMedico);	
+				System.out.println("teste medico" + objMedico);
+				
+				System.out.println("funcionario" + usuarioLogado);
+				String f = usuarioLogado.getCdUsuario().toString();		
+				Usuario objFuncionario = UsuarioBO.recuperarUsuario(Integer.parseInt(f));	
+				System.out.println("teste funcionario" + objFuncionario);
+				
+				int u = usuarioLogado.getCdUnidade().getCdUnidade();
+				UnidadeSus unidade = UnidadeDAO.recuperaUnidade(u);
+				System.out.println("teste Unidade" + unidade);
+				
 				Consulta consulta = new Consulta();
 				consulta.setData(LocalDate.parse(dtConsulta, format));
 				consulta.setHorario(horario);

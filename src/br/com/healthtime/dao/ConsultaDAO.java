@@ -26,6 +26,8 @@ public class ConsultaDAO {
 			e.printStackTrace();
 		} finally {
 			if (session != null && session.isOpen()) {
+				session.flush ();
+			    session.clear ();
 				session.close();
 			}
 		}

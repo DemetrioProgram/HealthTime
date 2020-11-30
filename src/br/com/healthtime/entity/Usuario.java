@@ -24,7 +24,7 @@ public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long cdUsuario;
+	private Integer cdUsuario;
 	@Column(name="nome", nullable = false)
 	private String nome;
 	@Column(name="nucontatoprincipal", nullable = false)
@@ -87,7 +87,7 @@ public class Usuario implements Serializable {
 	}
 
 
-	public Usuario(Long cdUsuario, String nome, String nuContatoPrincipal, String nuContatoSecundario,
+	public Usuario(Integer cdUsuario, String nome, String nuContatoPrincipal, String nuContatoSecundario,
 			LocalDate dtnascimento, String cpf, String sus, String email, String nomeMae, Integer codigo, boolean flPne,
 			boolean flIdoso, boolean flGestante, boolean flMenorIdade, UnidadeSus cdUnidade, Endereco endereco) {
 		super();
@@ -110,12 +110,12 @@ public class Usuario implements Serializable {
 	}
 
 
-	public Long getCdUsuario() {
+	public Integer getCdUsuario() {
 		return cdUsuario;
 	}
 
 
-	public void setCdUsuario(Long cdUsuario) {
+	public void setCdUsuario(Integer cdUsuario) {
 		this.cdUsuario = cdUsuario;
 	}
 

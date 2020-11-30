@@ -90,6 +90,8 @@ public class UsuarioDAO {
 			return null;
 		} finally {
 			if (session != null && session.isOpen()) {
+				session.flush ();
+			    session.clear ();
 				session.close();
 			}
 		}
@@ -119,6 +121,8 @@ public class UsuarioDAO {
 			return null;
 		} finally {
 			if (session != null && session.isOpen()) {
+				
+			    //session.clear ();
 				session.close();
 			}
 		}
@@ -201,7 +205,7 @@ public class UsuarioDAO {
 			
 			Usuario medico = findAllQuery.getSingleResult();
 
-			System.out.println("Usuario" + medico);
+			System.out.println("Medico" + medico);
 
 			transaction.commit();
 
@@ -213,6 +217,8 @@ public class UsuarioDAO {
 			return null;
 		} finally {
 			if (session != null && session.isOpen()) {
+				//session.flush ();
+			    //session.clear ();
 				session.close();
 			}
 		}
