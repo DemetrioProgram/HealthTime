@@ -28,8 +28,8 @@
 					Agendar Consulta
 				</a> 
 					
-				<a class="nav-link" href="#">
-					Editar Consulta
+				<a class="nav-link" href="CadastroConsulta.jsp">
+					Agendar Consulta
 				</a>
 				
 				<a class="nav-link" href="ValidarUsuario.jsp">
