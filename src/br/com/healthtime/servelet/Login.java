@@ -52,7 +52,32 @@ public class Login extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		validaLogin(request, response);
+		System.out.println("Inicial post");
+		
+		unidades = UnidadeDAO.listarUnidades();
+		
+		System.out.println("unidades teste " +unidades);
+		
+		if (unidades != null || unidades.size() > 0)
+		{
+			
+			request.setAttribute("unidades", unidades);
+			
+			
+			try {
+				validaLogin(request, response);
+				
+
+			} catch (Exception e) {
+				System.out.println("errro" + e);
+				RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
+				rd.forward(request, response);
+			}
+			
+			
+		}	
+		
+		
 	}
 
 	private void validaLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -61,9 +86,13 @@ public class Login extends HttpServlet {
 		String cpf = request.getParameter("txtCpf");
 		cpf = cpf.replace(".", "").replace("-", "");
 		
+		String unidade = request.getParameter("cbxMedico");
+		int cdUnidade = Integer.parseInt(unidade);
+		
 		
 		Gestor gestor = new Gestor();
 		gestor = GestorDAO.doLogin(cpf);
+			
 		
 		Usuario usuario = new Usuario();
 		usuario = UsuarioDAO.doLogin(cpf);
@@ -71,6 +100,7 @@ public class Login extends HttpServlet {
 		
 		if (gestor != null)
 		{
+			
 			RequestDispatcher rd = request.getRequestDispatcher("Principal.jsp");
 			request.getSession().setAttribute("gestor", gestor);
 			rd.forward(request, response); 
@@ -78,14 +108,25 @@ public class Login extends HttpServlet {
 		
 		if (usuario != null)
 		{
+			if (usuario.getCdUnidade().getCdUnidade() == cdUnidade)
+			{
 				RequestDispatcher rd = request.getRequestDispatcher("CadastroConsulta");
 				request.getSession().setAttribute("usuario", usuario);
 				rd.forward(request, response);
+			}
+			else 
+			{
+				 request.setAttribute("erro", new Exception("Selecione a Unidade Correta"));
+					//RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
+					response.sendRedirect("Login");
+					//rd.forward(request, response);
+			}
+				
 		}
 
 		 if (usuario == null && gestor == null) 
 		 {
-			 request.setAttribute("erro", new Exception("Usuï¿½rio nï¿½o encontrado."));
+			 request.setAttribute("erro", new Exception("Usuário não Encontrado"));
 				RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
 				rd.forward(request, response);
 		 }

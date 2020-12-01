@@ -12,6 +12,7 @@ import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
 import br.com.healthtime.entity.Endereco;
+import br.com.healthtime.entity.Gestor;
 import br.com.healthtime.entity.Usuario;
 import br.com.healthtime.util.HibernateUtil;
 
@@ -121,12 +122,12 @@ public class UsuarioDAO {
 			return null;
 		} finally {
 			if (session != null && session.isOpen()) {
-				
-			    //session.clear ();
 				session.close();
 			}
 		}
 	}
+	
+	
 
 	public static Usuario validaUsuario(Usuario usuario) {
 

@@ -141,7 +141,7 @@ private void processRequest(HttpServletRequest req, HttpServletResponse resp) th
 		
 		try {
 			validaDadosRecebidos(req);
-			RequestDispatcher rd = req.getRequestDispatcher("Login.jsp");
+			RequestDispatcher rd = req.getRequestDispatcher("Login");
 			rd.forward(req, resp);
 
 		} catch (Exception e) {
