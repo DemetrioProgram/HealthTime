@@ -30,6 +30,11 @@
 	width: 70%;
 }
 
+span.psw {
+	margin-left: 38%;
+	padding-top: 16px;
+}
+
 /* The container must be positioned relative: */
 .custom-select {
 	position: relative;
