@@ -8,6 +8,8 @@
 <link rel="stylesheet" type="text/css" href="resources/css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="resources/css/style.css">
 
+<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 <script src="resources/js/jquery-1.5.2.min.js"></script>
 <script src="resources/js/combo.js"></script>
 <script src="resources/js/jquery.maskedinput-1.3.min.js"></script>
@@ -51,15 +53,22 @@
 					</div>
 
 					<input value="Entrar" class="btn btn-primary btn-lg btn-block"	type="submit">
+					
+					<span class="psw">Ainda não sou <a href="CadastroUsuario">cadastrado</a>.</span>
 
 					<%
 						Exception erro = (Exception) request.getAttribute("erro");
 						if (erro != null) {
 					%>
-					<div class="alert alert-danger" role="alert"
+					<!--  <div class="alert alert-danger" role="alert"
 						style="text-align: center; margin-top: 10px;">
-						<span><%=erro.getMessage()%></span>
-					</div>
+						<span></span>
+					</div> -->
+					<script>
+					$(document).ready(function() {
+					swal ('<%=erro.getMessage()%>', '', 'error' );
+					});
+					</script>
 					<%
 						}
 					%>
