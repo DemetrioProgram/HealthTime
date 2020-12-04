@@ -42,7 +42,7 @@
 								<option value="">Selecione</option>
 
 								<c:forEach var="unidade" items="${unidades}">
-									<option value="${unidade.nmunidade}">${unidade.nmunidade}</option>
+									<option value="${unidade.cdUnidade}">${unidade.nmunidade}</option>
 								</c:forEach>
 
 							</select>
