@@ -9,6 +9,11 @@
 		href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
 		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
 		crossorigin="anonymous"/>
+		
+		
+<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <title>Cadastrar Consulta</title>
 </head>
@@ -90,6 +95,28 @@
 				</td>
 			</tr>
 		</table>
+		
+					<%
+						String msg = (String) request.getAttribute("msg");
+						if (msg != null && msg.equals("Sucesso")) {
+					%>
+					
+					<script>
+					$(document).ready(function() {
+					swal ('Sucesso', '', 'success' );
+					});
+					</script>
+					<%
+						 } else if (msg != null){
+					%>
+					<script>
+					$(document).ready(function() {
+					swal ('<%=msg%>', '', 'error' );
+					});
+					</script>
+						<%
+						 } 
+					%>
 
 
 	</form>

@@ -34,13 +34,13 @@
 						<label>CPF</label> 
 						
 						<input	class="form-control ls-login-bg-user input-lg" id="cpf"
-							aria-label="CPF" name="txtCpf" placeholder="CPF" type="text">
+							aria-label="CPF" name="txtCpf" placeholder="CPF" type="text" >
 
 
 						<label class="fonte">Unidade:</label>
 						
 						<div class="custom-select">
-							<select id="cbxMedico" name="cbxMedico" required>
+							<select id="cbxMedico" name="cbxMedico" >
 								<option value="">Selecione</option>
 
 								<c:forEach var="unidade" items="${unidades}">

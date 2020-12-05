@@ -35,10 +35,7 @@
 				<a class="nav-link" href="ValidarUsuario.jsp">
 					Validar Usuário
 				</a>
-				
-				<a class="nav-link" href="CadastroUsuario.jsp">
-					Cadastro Usuário
-				</a>
+								
 				
 			</div>
 		</div>

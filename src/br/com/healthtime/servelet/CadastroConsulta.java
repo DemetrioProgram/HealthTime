@@ -27,8 +27,9 @@ public class CadastroConsulta extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Usuario usuarioLogado;
 	
-	DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+	DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 	List<Usuario> medicos;
+	String msg;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -72,6 +73,8 @@ public class CadastroConsulta extends HttpServlet {
 			
 			try {
 				validaDadosRecebidos(request);
+				
+				request.setAttribute("msg", msg);
 				RequestDispatcher rd = request.getRequestDispatcher("CadastroConsulta.jsp");
 				rd.forward(request, response);
 
@@ -113,7 +116,12 @@ public class CadastroConsulta extends HttpServlet {
 				System.out.println("teste Unidade" + unidade);
 				
 				Consulta consulta = new Consulta();
-				consulta.setData(LocalDate.parse(dtConsulta, format));
+				
+				
+				
+				System.out.println("Data maldita" + dtConsulta);
+				
+				consulta.setData(LocalDate.parse(dtConsulta, format));				
 				consulta.setHorario(horario);
 				consulta.setCdFuncioanrio(objFuncionario);
 				consulta.setCdMedico(objMedico);
@@ -123,7 +131,9 @@ public class CadastroConsulta extends HttpServlet {
 				
 				
 				ConsultaBO bo = new ConsultaBO();
-				bo.salvaConsulta(consulta);;
+				msg = bo.salvaConsulta(consulta);;
+				
+				
 				
 
 			} catch (Exception e) {

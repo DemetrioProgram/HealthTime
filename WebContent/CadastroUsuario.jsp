@@ -19,8 +19,7 @@
 
 
 <body onload="combo()">
-
-	<%@include file="NavBar.jsp"%>
+	
 
 	<form action="CadastroUsuario" method="post">
 

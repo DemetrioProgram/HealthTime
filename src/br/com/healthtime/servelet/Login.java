@@ -86,7 +86,23 @@ public class Login extends HttpServlet {
 		String cpf = request.getParameter("txtCpf");
 		cpf = cpf.replace(".", "").replace("-", "");
 		
+
+		if (cpf.isEmpty()) 
+		{
+			 request.setAttribute("erro", new Exception("Insira um Cpf"));
+				RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
+				rd.forward(request, response);
+		}
+		
 		String unidade = request.getParameter("cbxMedico");
+		
+		if (unidade.isEmpty()) 
+		{
+			 request.setAttribute("erro", new Exception("Selecione uma Unidade SUS"));
+				RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
+				rd.forward(request, response);
+		}
+		
 		int cdUnidade = Integer.parseInt(unidade);
 		
 		
@@ -116,10 +132,9 @@ public class Login extends HttpServlet {
 			}
 			else 
 			{
-				 request.setAttribute("erro", new Exception("Selecione a Unidade Correta"));
-					//RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
-					response.sendRedirect("Login");
-					//rd.forward(request, response);
+				request.setAttribute("erro", new Exception("Selecione a Unidade SUS correta"));
+				RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
+				rd.forward(request, response);
 			}
 				
 		}
