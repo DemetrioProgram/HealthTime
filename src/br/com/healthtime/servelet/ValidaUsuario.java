@@ -38,6 +38,7 @@ public class ValidaUsuario extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 
 		String cpf = request.getParameter("txtNuCpf");
+		cpf = cpf.replace(".", "").replace("-", "");
 		System.out.println("CPF: "+cpf);
 		
 		

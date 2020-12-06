@@ -89,3 +89,38 @@
 .select-items div:hover, .same-as-selected {
 	background-color: rgba(0, 0, 0, 0.1);
 }
+
+#cadastroConsulta {
+	background-image: url("../img/cadastroConsulta.svg");
+	background-repeat: no-repeat;
+	background-size: 80%;
+}
+
+#validaUsuario {
+	background-image: url("../img/validaUsuario.svg");
+	background-repeat: no-repeat;
+	background-size: 80%;
+}
+
+#cadastroUsuario {
+	background-image: url("../img/cadastroUsuario.svg");
+	background-repeat: no-repeat;
+	background-size: 80%;
+}
+
+#login {
+	background-color: #A1CAF1;
+}
+
+.final-btn {
+	padding: 20px;
+}
+
+.font-weight-bold {
+	padding: 20px;
+}
+
+.imgCadastro {
+	float: right;
+	width: 50%;
+}

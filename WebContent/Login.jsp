@@ -13,9 +13,9 @@
 <script src="resources/js/jquery-1.5.2.min.js"></script>
 <script src="resources/js/combo.js"></script>
 <script src="resources/js/jquery.maskedinput-1.3.min.js"></script>
-<title>Insert title here</title>
+<title>Login</title>
 </head>
-<body onload="combo()">
+<body id="login" onload="combo()">
 
 	<div class="box-parent-login" style="margin-left: 30%; margin-right: 30%; margin-top: 10%">
 	
@@ -60,10 +60,6 @@
 						Exception erro = (Exception) request.getAttribute("erro");
 						if (erro != null) {
 					%>
-					<!--  <div class="alert alert-danger" role="alert"
-						style="text-align: center; margin-top: 10px;">
-						<span></span>
-					</div> -->
 					<script>
 					$(document).ready(function() {
 					swal ('<%=erro.getMessage()%>', '', 'error' );

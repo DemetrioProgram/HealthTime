@@ -19,20 +19,15 @@
 		
 			<div class="navbar-nav">
 				
-				<a class="nav-link active" href="Principal.jsp">
-					Inicio 
-				<span class="sr-only">(current)</span>
+				<a class="nav-link active font-weight-bold" href="Principal.jsp">
+					Inicio
 				</a> 
 					
-				<a class="nav-link"	href="CadastroConsulta">
+				<a class="nav-link font-weight-bold"	href="CadastroConsulta">
 					Agendar Consulta
 				</a> 
-					
-				<a class="nav-link" href="CadastroConsulta.jsp">
-					Agendar Consulta
-				</a>
 				
-				<a class="nav-link" href="ValidarUsuario.jsp">
+				<a class="nav-link font-weight-bold" href="ValidarUsuario.jsp">
 					Validar Usuário
 				</a>
 								
