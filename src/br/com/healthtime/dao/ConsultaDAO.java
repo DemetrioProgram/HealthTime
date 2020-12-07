@@ -1,5 +1,6 @@
 package br.com.healthtime.dao;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.TypedQuery;
@@ -53,6 +54,43 @@ public class ConsultaDAO {
 			List<Consulta> consultas = findAllQuery.getResultList();
 
 			System.out.println("Consultas" + consultas.size());
+
+			transaction.commit();
+			
+			if (consultas.size() > 0) {
+				return consultas;
+			}
+			else {
+				return null;
+			}
+
+		} catch (Exception e) {
+			System.out.println("Erro Listar Consultas");
+			e.printStackTrace();
+			return null;
+		} finally {
+			if (session != null && session.isOpen()) {
+				
+				session.close();
+			}
+		}
+	}
+
+	public static List<Consulta> listarConsutas(LocalDate  dtConsulta) {
+		
+		Session session = HibernateUtil.getSessionFactory().openSession();
+
+		Transaction transaction = null;
+
+		try {
+			transaction = session.beginTransaction();
+
+			TypedQuery<Consulta> findAllQuery = session.createQuery("from Consulta where data=" + "'"+dtConsulta+"'", Consulta.class);	
+						
+			
+			List<Consulta> consultas = findAllQuery.getResultList();
+
+			System.out.println("Consultas" + consultas.size()); 
 
 			transaction.commit();
 			

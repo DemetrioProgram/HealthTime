@@ -35,6 +35,11 @@
         <servlet-class>br.com.healthtime.servelet.ValidaUsuario</servlet-class>
     </servlet>
     
+        <servlet>
+        <servlet-name>AgendarConsulta</servlet-name>
+        <servlet-class>br.com.healthtime.servelet.AgendarConsulta</servlet-class>
+    </servlet>
+    
     <servlet-mapping>
         <servlet-name>CadastroUsuario</servlet-name>
         <url-pattern>/CadastroUsuario</url-pattern>
@@ -53,6 +58,11 @@
      <servlet-mapping>
         <servlet-name>CadastroConsulta</servlet-name>
         <url-pattern>/CadastroConsulta</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>AgendarConsulta</servlet-name>
+        <url-pattern>/AgendarConsulta</url-pattern>
     </servlet-mapping>
 	
 </web-app>

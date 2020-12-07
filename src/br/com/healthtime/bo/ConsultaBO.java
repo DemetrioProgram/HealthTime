@@ -1,6 +1,7 @@
 package br.com.healthtime.bo;
 
 import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
@@ -57,6 +58,14 @@ public class ConsultaBO {
 		}
 		
 		return msg;
+	}
+
+	public static List<Consulta> listarConsultas(LocalDate dtConsulta)
+	{
+		List<Consulta> lstConsultas = ConsultaDAO.listarConsutas(dtConsulta);
+		
+		
+		return lstConsultas;
 	}
 	
 	
