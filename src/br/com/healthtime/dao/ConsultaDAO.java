@@ -85,7 +85,8 @@ public class ConsultaDAO {
 		try {
 			transaction = session.beginTransaction();
 
-			TypedQuery<Consulta> findAllQuery = session.createQuery("from Consulta where data=" + "'"+dtConsulta+"'", Consulta.class);	
+			TypedQuery<Consulta> findAllQuery = session.createQuery("from Consulta where cdpaciente is null and data=" + "'"+dtConsulta+"' " + 
+			"group by horario", Consulta.class);	
 						
 			
 			List<Consulta> consultas = findAllQuery.getResultList();
@@ -108,6 +109,102 @@ public class ConsultaDAO {
 		} finally {
 			if (session != null && session.isOpen()) {
 				
+				session.close();
+			}
+		}
+	}
+
+	public static Consulta agendarConsulta(Consulta consultaAgendada) {
+		// TODO Auto-generated method stub
+		Session session = HibernateUtil.getSessionFactory().openSession();
+
+		Transaction transaction = null;
+
+		try {
+
+			transaction = session.beginTransaction();
+
+			session.update(consultaAgendada);
+
+			transaction.commit();
+
+			return consultaAgendada;
+
+		} catch (Exception e) {
+			System.out.println("Erro Agendar Consulta");
+			e.printStackTrace();
+			return null;
+		} finally {
+			if (session != null && session.isOpen()) {
+				session.close();
+			}
+		}
+	}
+
+	public static Consulta obterConsulta(int idConsulta) {
+		// TODO Auto-generated method stub
+		Session session = HibernateUtil.getSessionFactory().openSession();
+
+		Transaction transaction = null;
+
+		try {
+			transaction = session.beginTransaction();	
+			
+			TypedQuery<Consulta> findAllQuery = session.createQuery("from Consulta where cdConsulta="+idConsulta, Consulta.class);	
+			
+			
+			
+			Consulta consulta = findAllQuery.getSingleResult();
+
+			System.out.println("Consulta" + consulta);
+
+			transaction.commit();
+
+			return consulta;
+
+		} catch (Exception e) {
+			System.out.println("Erro doObterConsulta");
+			e.printStackTrace();
+			return null;
+		} finally {
+			if (session != null && session.isOpen()) {
+				//session.flush ();
+			    //session.clear ();
+				session.close();
+			}
+		}
+	}
+
+	public static Consulta obterConsulta(LocalDate dtConsulta, int cdUsuario) {
+		// TODO Auto-generated method stub
+		Session session = HibernateUtil.getSessionFactory().openSession();
+
+		Transaction transaction = null;
+
+		try {
+			transaction = session.beginTransaction();	
+			
+			TypedQuery<Consulta> findAllQuery = session.createQuery("from Consulta where cdPaciente="+cdUsuario
+					+" and data="+ "'"+dtConsulta+"'", Consulta.class);	
+			
+			
+			
+			Consulta consulta = findAllQuery.getSingleResult();
+
+			System.out.println("Consulta" + consulta);
+
+			transaction.commit();
+
+			return consulta;
+
+		} catch (Exception e) {
+			System.out.println("Erro doObterConsulta");
+			e.printStackTrace();
+			return null;
+		} finally {
+			if (session != null && session.isOpen()) {
+				//session.flush ();
+			    //session.clear ();
 				session.close();
 			}
 		}

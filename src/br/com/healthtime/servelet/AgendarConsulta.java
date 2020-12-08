@@ -14,8 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.healthtime.bo.ConsultaBO;
 import br.com.healthtime.bo.UsuarioBO;
+import br.com.healthtime.dao.ConsultaDAO;
 import br.com.healthtime.dao.UsuarioDAO;
 import br.com.healthtime.entity.Consulta;
+import br.com.healthtime.entity.Usuario;
 
 /**
  * Servlet implementation class AgendarConsulta
@@ -24,8 +26,9 @@ import br.com.healthtime.entity.Consulta;
 public class AgendarConsulta extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
+	Usuario usuarioLogado;
 	Consulta consulta = new Consulta();
-	Consulta consultaAgendade;
+	Consulta consultaAgendada = new Consulta();
 	DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 	List<Consulta> lstConsultas;
        
@@ -52,8 +55,7 @@ public class AgendarConsulta extends HttpServlet {
 		{
 			consulta.setData(dtConsulta);			
 			request.setAttribute("consulta", consulta);
-			request.setAttribute("lstConsultas", lstConsultas);
-			request.setAttribute("DtConsulta", data);
+			request.setAttribute("lstConsultas", lstConsultas);	
 			RequestDispatcher rd = request.getRequestDispatcher("AgendarConsulta.jsp");
 			rd.forward(request, response);
 			
@@ -72,9 +74,21 @@ public class AgendarConsulta extends HttpServlet {
 	private void validaDadosRecebidos(HttpServletRequest request) 
 	{
 		// TODO Auto-generated method stub
-		String cdConsulta = request.getParameter("cbxConsuta");	
-		System.out.println("recuperou " + cdConsulta);
-		consulta.setCdConsulta(Integer.parseInt(cdConsulta));
+		String cdConsulta = request.getParameter("cbxConsulta");	
+		int idConsulta = Integer.parseInt(cdConsulta);
+		
+		String vacina = request.getParameter("flVacina");
+		String retorno = request.getParameter("flRetorno");
+		String sintomas = request.getParameter("txtPrediagnostico");
+		
+		System.out.println("cd consulta"  + cdConsulta);
+		
+		consultaAgendada = ConsultaDAO.obterConsulta(idConsulta);
+		
+		consultaAgendada.setFlvacina(Boolean.parseBoolean(vacina));
+		consultaAgendada.setRetorno(Boolean.parseBoolean(retorno));
+		consultaAgendada.setDeprediagnostico(sintomas);
+		consultaAgendada.setCdPaciente(usuarioLogado);
 	}
 
 	/**
@@ -83,16 +97,20 @@ public class AgendarConsulta extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		try {
+			
+			usuarioLogado = (Usuario) request.getSession().getAttribute("usuario");
 			validaDadosRecebidos(request);
-			//consutaAgendada = UsuarioBO.validaUsuario(usuario);
+			consultaAgendada = ConsultaBO.agendarConsulta(consultaAgendada);
 			RequestDispatcher rd = request.getRequestDispatcher("AgendarConsulta.jsp");
 			rd.forward(request, response);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+			doGet(request, response);
 		
-		doGet(request, response);
+		
+		
 	}
 
 }

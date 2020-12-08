@@ -28,6 +28,22 @@ public class UsuarioBO {
 		LocalDate data = usuario.getDtnascimento();
 		LocalDate dataAtual = LocalDate.now();
 		
+		
+		if (data.equals(dataAtual) )
+		{
+			throw new Exception("A data informada está inválida");			
+		}
+		
+		if (data.isAfter(dataAtual)) 
+		{
+			throw new Exception("A data informada está inválida");			
+		}
+		
+		if (dataAtual.minusYears(100).isAfter(data)) 
+		{
+			throw new Exception("A data informada está inválida");
+		}
+		
 		if (data.plusYears(18).isBefore(dataAtual) && usuario.isFlMenorIdade()) 
 		{
 			throw new Exception("A data informada está inválida para usuário menor de idade");			

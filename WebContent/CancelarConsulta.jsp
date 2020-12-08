@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <%@page import="br.com.healthtime.entity.Consulta"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -18,20 +18,17 @@
 <script
 	src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Marcar Consulta</title>
+<title>Cancelar Consulta</title>
 </head>
-
-
-
-<body id="AgendarConsulta">
+<body id="CancelarConsulta">
 
 	<%@include file="NavBar.jsp"%>
 	
 	<% Consulta consulta = (Consulta) request.getAttribute("consulta"); %>
 
-	<h1 align="center">Agende sua Consulta</h1>
+	<h1 align="center">Cancelar Consulta</h1>
 
-	<form action="AgendarConsulta" method="post"
+	<form action="CancelarConsulta" method="post"
 		style="width: 50%; margin-top: 8%; margin-left: 20%; border-style: inherit;">
 
 		<table id="tblPrincipal" width="100%" cellspacing="0" cellpadding="5px" border="0">
@@ -63,51 +60,14 @@
 						<tr>
 							<td align="right">
 								<label class="font-weight-bold">
-									Consultas Disponíveis:
+									Consulta Agendada:
 								</label>
 							</td>
 							
 							<td>
-								<select class="form-control" id="cbxConsulta" name="cbxConsulta" style="width: 100%">
-									<option value="">Selecione</option>
-
-									<c:forEach var="consulta" items="${lstConsultas}">
-										<option value="${consulta.cdConsulta}">${consulta.horario}</option>
-									</c:forEach>
-
-								</select>
+								<input class="form-control" type="text" size="10" name="txtHorario" value="<%= consulta.getHorario() %>" disabled/>
 							</td>
-						</tr>
-						
-						<tr>
-							<td align="right">
-								<label class=" font-weight-bold">Retorno:</label>
-							</td>
-							
-							<td align="left">
-								<input type="checkbox" value="true"	name="flRetorno" />
-							</td>
-						</tr>
-						
-						<tr>
-							<td align="right">
-								<label class=" font-weight-bold">Vacinação:</label>
-							</td>
-							
-							<td align="left">
-								<input type="checkbox" value="true"	name="flVacina" />
-							</td>
-						</tr>
-						
-						<tr>
-							<td align="right">
-								<label class=" font-weight-bold">Sintomas:</label>
-							</td>
-							
-							<td align="left">
-								<textarea id="txtPrediagnostico" name="txtPrediagnostico" rows="5" cols="33"></textarea>
-							</td>
-						</tr>
+						</tr>						
 
 						<% } %>
 					</table>
@@ -117,7 +77,7 @@
 					<table>
 						<tr>
 							<td class="final-btn" width="965px" align="center">
-								<input class="btn btn-primary btn-lg" type="submit" value="Vamos Lá" />
+								<input class="btn btn-primary btn-lg" type="submit" value="Cancelar" />
 							</td>
 						</tr>
 					</table>

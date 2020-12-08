@@ -67,6 +67,16 @@ public class ConsultaBO {
 		
 		return lstConsultas;
 	}
+
+	public static Consulta agendarConsulta(Consulta consultaAgendada) {
+		// TODO Auto-generated method stub
+		return ConsultaDAO.agendarConsulta(consultaAgendada);
+	}
+
+	public static Consulta obterConsulta(LocalDate dtConsulta, int cdUsuario) {
+		// TODO Auto-generated method stub
+		return ConsultaDAO.obterConsulta(dtConsulta, cdUsuario);
+	}
 	
 	
 
