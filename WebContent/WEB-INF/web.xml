@@ -40,6 +40,16 @@
         <servlet-class>br.com.healthtime.servelet.AgendarConsulta</servlet-class>
     </servlet>
     
+          <servlet>
+        <servlet-name>CancelarConsulta</servlet-name>
+        <servlet-class>br.com.healthtime.servelet.CancelarConsulta</servlet-class>
+    </servlet>
+    
+     <servlet>
+        <servlet-name>Principal</servlet-name>
+        <servlet-class>br.com.healthtime.servelet.Principal</servlet-class>
+    </servlet>
+    
     <servlet-mapping>
         <servlet-name>CadastroUsuario</servlet-name>
         <url-pattern>/CadastroUsuario</url-pattern>
@@ -63,6 +73,16 @@
     <servlet-mapping>
         <servlet-name>AgendarConsulta</servlet-name>
         <url-pattern>/AgendarConsulta</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>CancelarConsulta</servlet-name>
+        <url-pattern>/CancelarConsulta</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>Principal</servlet-name>
+        <url-pattern>/Principal</url-pattern>
     </servlet-mapping>
 	
 </web-app>

@@ -122,7 +122,7 @@
 
 						<tr>
 							<td align="right">
-								<label class=" font-weight-bold">Tel. Contato:</label>
+								<label class=" font-weight-bold">Tel. Celular:</label>
 							</td>
 							
 							<td align="left">
@@ -132,7 +132,7 @@
 
 						<tr>
 							<td align="right">
-								<label class=" font-weight-bold">Tel. Contato 2:</label>
+								<label class=" font-weight-bold">Tel. Residêncial:</label>
 							</td>
 							
 							<td align="left">
@@ -209,7 +209,7 @@
 						</tr>
 
 						<tr>
-							<td align="right"><label class=" font-weight-bold">UF</label></td>
+							<td align="right"><label class=" font-weight-bold">UF:</label></td>
 							<td>
 									<select class="form-control" id="cbxUf" name="cbxUf" required>
 										<option value="">Nenhuma</option>

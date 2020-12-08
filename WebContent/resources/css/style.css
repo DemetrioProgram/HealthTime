@@ -92,20 +92,23 @@
 
 #cadastroConsulta {
 	background-image: url("../img/cadastroConsulta.svg");
-	background-repeat: no-repeat;
-	background-size: 80%;
+	/*background-repeat: no-repeat;*/
+	background-size: 100%;
+	color: #41729F;
 }
 
 #validaUsuario {
 	background-image: url("../img/validaUsuario.svg");
-	background-repeat: no-repeat;
-	background-size: 80%;
+	/*background-repeat: no-repeat;*/
+	background-size: 100%;
+	color: #41729F;
 }
 
 #cadastroUsuario {
 	background-image: url("../img/cadastroUsuario.svg");
-	background-repeat: no-repeat;
-	background-size: 80%;
+	/*background-repeat: no-repeat;*/
+	background-size: 100%;
+	color: #41729F;
 }
 
 #login {
@@ -113,11 +116,12 @@
 }
 
 .final-btn {
-	padding: 20px;
+	padding: 10px;
 }
 
 .font-weight-bold {
-	padding: 20px;
+	padding: 10px;
+	
 }
 
 .imgCadastro {
