@@ -44,11 +44,8 @@ public class CadastroConsulta extends HttpServlet {
 	 */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-    	System.out.println("Inicial get");
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		 doPost(request, response);
-		 
-		
 	}
 
 	/**
@@ -57,18 +54,13 @@ public class CadastroConsulta extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		// TODO Auto-generated method stub
-		System.out.println("Inicial post");
 		
 		medicos = UsuarioDAO.listarMedicos(2);
-		
-		System.out.println("medico teste " +medicos);
 		
 		if (medicos != null || medicos.size() > 0)
 		{
 			
 			usuarioLogado = (Usuario) request.getSession().getAttribute("usuario");
-			//request.getSession().invalidate();
-			System.out.println("lista" + medicos.get(0).getNome());
 			request.setAttribute("medicos", medicos);
 			
 			
@@ -80,7 +72,7 @@ public class CadastroConsulta extends HttpServlet {
 				rd.forward(request, response);
 
 			} catch (Exception e) {
-				System.out.println("errro" + e);
+				System.out.println("Erro" + e);
 				RequestDispatcher rd = request.getRequestDispatcher("CadastroConsulta.jsp");
 				rd.forward(request, response);
 			}
@@ -105,37 +97,23 @@ public class CadastroConsulta extends HttpServlet {
 				
 				int cdMedico = Integer.parseInt(Medico);	
 				Usuario objMedico = UsuarioBO.recuperarUsuario(cdMedico);	
-				System.out.println("teste medico" + objMedico);
 				
-				System.out.println("funcionario" + usuarioLogado);
 				String f = usuarioLogado.getCdUsuario().toString();		
 				Usuario objFuncionario = UsuarioBO.recuperarUsuario(Integer.parseInt(f));	
-				System.out.println("teste funcionario" + objFuncionario);
 				
 				int u = usuarioLogado.getCdUnidade().getCdUnidade();
 				UnidadeSus unidade = UnidadeDAO.recuperaUnidade(u);
-				System.out.println("teste Unidade" + unidade);
 				
 				Consulta consulta = new Consulta();
-				
-				
-				
-				System.out.println("Data maldita" + dtConsulta);
 				
 				consulta.setData(LocalDate.parse(dtConsulta, format));				
 				consulta.setHorario(horario);
 				consulta.setCdFuncioanrio(objFuncionario);
 				consulta.setCdMedico(objMedico);
-				consulta.setCdUnidade(unidade);
-
-				System.out.println("Consulta: "+consulta);
-				
+				consulta.setCdUnidade(unidade);				
 				
 				ConsultaBO bo = new ConsultaBO();
-				msg = bo.salvaConsulta(consulta);;
-				
-				
-				
+				msg = bo.salvaConsulta(consulta);;				
 
 			} catch (Exception e) {
 				System.out.println("Erro: " + e);

@@ -35,15 +35,12 @@ public class ValidaUsuario extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
 
 		String cpf = request.getParameter("txtNuCpf");
 		cpf = cpf.replace(".", "").replace("-", "");
-		System.out.println("CPF: "+cpf);
-		
 		
 		usuario = UsuarioDAO.doLogin(cpf);
-		System.out.println(usuario);
 		
 		if (usuario != null) 
 		{

@@ -66,7 +66,6 @@ public class CadastroUsuario extends HttpServlet {
 		String nuCpf = req.getParameter("txtNuCpf");
 		
 		nuCpf = nuCpf.replace(".", "").replace("-", "");
-		System.out.println(nuCpf);
 		String dtNascimento = req.getParameter("txtDtNascimento");	
 		String email = req.getParameter("txtEmail");
 		String flGestante = req.getParameter("flGestante");
@@ -103,8 +102,6 @@ public class CadastroUsuario extends HttpServlet {
 				usuario.setCpf(nuCpf);
 				usuario.setDtnascimento(LocalDate.parse(dtNascimento, format));
 				
-				System.out.println("data: "+usuario.getDtnascimento());
-				
 				usuario.setNuContatoPrincipal(nuContato);
 				usuario.setNuContatoSecundario(nuContato2);
 				usuario.setNomeMae(nmMae);
@@ -124,9 +121,6 @@ public class CadastroUsuario extends HttpServlet {
 				endereco.setRua(nmRua);
 				endereco.setUf(UF);
 				usuario.setEndereco(endereco);
-				
-				System.out.println("Usuario: "+usuario);
-				
 				
 				UsuarioBO bo = new UsuarioBO();
 				bo.salvaUsuario(usuario);;

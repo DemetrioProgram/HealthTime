@@ -52,11 +52,8 @@ public class Login extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("Inicial post");
 		
 		unidades = UnidadeDAO.listarUnidades();
-		
-		System.out.println("unidades teste " +unidades);
 		
 		if (unidades != null || unidades.size() > 0)
 		{
@@ -69,7 +66,7 @@ public class Login extends HttpServlet {
 				
 
 			} catch (Exception e) {
-				System.out.println("errro" + e);
+				System.out.println("Erro" + e);
 				RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
 				rd.forward(request, response);
 			}

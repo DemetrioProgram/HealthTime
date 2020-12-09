@@ -34,7 +34,6 @@ public class ConsultaBO {
 		int cdUnidade = consulta.getCdUnidade().getCdUnidade();
 		
 		List<Consulta> consultas = ConsultaDAO.listarConsultas(cdMedico, cdUnidade);
-		
 		DayOfWeek dia = consulta.getData().getDayOfWeek();
 		
 		if (dia == DayOfWeek.SUNDAY || dia == DayOfWeek.SATURDAY) 
@@ -43,19 +42,21 @@ public class ConsultaBO {
 			
 		}
 		
-		for (Consulta objConsulta : consultas) 
-		{
-			
-			if (objConsulta.getData().compareTo(consulta.getData()) == 0)  
+		if (consultas != null && consultas.size() > 0) {
+			for (Consulta objConsulta : consultas) 
 			{
-				if (objConsulta.getHorario().equals(consulta.getHorario())) 
+				if (objConsulta.getData().compareTo(consulta.getData()) == 0)  
 				{
-					return "Consulta já cadastrada, selecione outro Médico ou outro Horário";
+					if (objConsulta.getHorario().equals(consulta.getHorario())) 
+					{
+						return "Consulta já cadastrada, selecione outro Médico ou outro Horário";
+					}
 				}
-			}
-			
-			
+				
+				
+			}			
 		}
+		
 		
 		return msg;
 	}
