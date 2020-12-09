@@ -48,6 +48,7 @@ public class AgendarConsulta extends HttpServlet {
 		String data = request.getParameter("txtDtConsulta");
 		LocalDate dtConsulta = LocalDate.parse(data, format);
 		
+		
 		lstConsultas = ConsultaBO.listarConsultas(dtConsulta);
 		
 		

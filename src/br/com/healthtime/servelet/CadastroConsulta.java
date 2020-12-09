@@ -47,6 +47,7 @@ public class CadastroConsulta extends HttpServlet {
     	System.out.println("Inicial get");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		 doPost(request, response);
+		 
 		
 	}
 

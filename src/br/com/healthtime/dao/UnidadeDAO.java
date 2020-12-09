@@ -76,6 +76,7 @@ public class UnidadeDAO {
 				//session.flush ();
 			    session.clear ();
 				session.close();
+				
 			}
 		}
 	}

@@ -126,7 +126,7 @@ public class Login extends HttpServlet {
 		{
 			if (usuario.getCdUnidade().getCdUnidade() == cdUnidade)
 			{
-				RequestDispatcher rd = request.getRequestDispatcher("CancelarConsulta.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("CadastroConsulta");				
 				request.getSession().setAttribute("usuario", usuario);
 				rd.forward(request, response);
 			}

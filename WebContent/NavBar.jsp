@@ -1,7 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	<%@page import="br.com.healthtime.entity.Usuario"%>
 <!DOCTYPE html>
 <header>
+
+	<% 
+		Usuario usuario = (Usuario) request.getAttribute("usuario");
+	%>
+
+	<% if(usuario != null) { %>
 
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		
@@ -23,6 +30,8 @@
 					Inicio
 				</a> 
 					
+					<%if(usuario.getCodigo() != 1) {%>
+					
 				<a class="nav-link font-weight-bold"	href="CadastroConsulta">
 					Agendar Consulta
 				</a> 
@@ -31,6 +40,7 @@
 					Validar Usuário
 				</a>
 								
+				<%}%>
 				
 			</div>
 		</div>
@@ -38,5 +48,7 @@
 		<img
 			src="https://img.icons8.com/material/48/000000/user-male-circle--v1.png" />
 	</nav>
+	
+	<%}%>
 
 </header>

@@ -71,6 +71,7 @@ public class UsuarioBO {
 		
 		dao.salvaUsuario(usuario);
 		
+		
 	}
 
 	public static Usuario validaUsuario(Usuario usuario) throws Exception {

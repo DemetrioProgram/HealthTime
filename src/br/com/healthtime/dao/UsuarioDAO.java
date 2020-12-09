@@ -221,6 +221,7 @@ public class UsuarioDAO {
 				//session.flush ();
 			    //session.clear ();
 				session.close();
+				
 			}
 		}
 	}

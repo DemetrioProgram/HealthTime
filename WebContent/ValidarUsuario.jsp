@@ -19,7 +19,7 @@
 	<%@include file="NavBar.jsp" %>
 	
 	<% 
-		Usuario usuario = (Usuario) request.getAttribute("usuario");
+		Usuario usuarioLogado = (Usuario) request.getAttribute("usuario");
 	%>
 	<h1 align="center">Valide o Usuário</h1>
 	
@@ -44,7 +44,7 @@
 							</td>	
 						</tr>
 						
-						<% if(usuario != null) { %>
+						<% if(usuarioLogado != null) { %>
 
 						<tr>
 							<td align="right"><label class="font-weight-bold">Nome:</label></td>

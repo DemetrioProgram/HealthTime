@@ -171,6 +171,7 @@ public class ConsultaDAO {
 				//session.flush ();
 			    //session.clear ();
 				session.close();
+				
 			}
 		}
 	}

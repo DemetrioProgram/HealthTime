@@ -76,6 +76,7 @@ public class ConsultaBO {
 	public static Consulta obterConsulta(LocalDate dtConsulta, int cdUsuario) {
 		// TODO Auto-generated method stub
 		return ConsultaDAO.obterConsulta(dtConsulta, cdUsuario);
+		
 	}
 	
 	
