@@ -9,19 +9,19 @@ public class UsuarioBO {
 	
 	UsuarioDAO dao = new UsuarioDAO();
 
-	public void salvaUsuario(Usuario usuario) throws Exception {
+	public String salvaUsuario(Usuario usuario)  {
 		
 		
 		Usuario objUsuario = dao.doLogin(usuario.getCpf());
 		
 		if (!this.validaCPF(usuario.getCpf()).isEmpty())
 		{
-			throw new Exception("CPF Inválido");	
+			return "CPF Inválido";	
 		}
 		
 		if (objUsuario != null)
 		{
-			throw new Exception("CPF já cadastrado");	
+			return "CPF já cadastrado";	
 		}
 		
 		//RN12
@@ -31,45 +31,47 @@ public class UsuarioBO {
 		
 		if (data.equals(dataAtual) )
 		{
-			throw new Exception("A data informada está inválida");			
+			return "A data informada está inválida";			
 		}
 		
 		if (data.isAfter(dataAtual)) 
 		{
-			throw new Exception("A data informada está inválida");			
+			return "A data informada está inválida";			
 		}
 		
 		if (dataAtual.minusYears(100).isAfter(data)) 
 		{
-			throw new Exception("A data informada está inválida");
+			return "A data informada está inválida";
 		}
 		
 		if (data.plusYears(18).isBefore(dataAtual) && usuario.isFlMenorIdade()) 
 		{
-			throw new Exception("A data informada está inválida para usuário menor de idade");			
+			return "A data informada está inválida para usuário menor de idade";			
 		}
 		
 		if (data.plusYears(18).isAfter(dataAtual) && !usuario.isFlMenorIdade()) 
 		{
-			throw new Exception("É obrigatorio selecionar a opção Menor de Idade");
+			return "É obrigatorio selecionar a opção Menor de Idade";
 		}
 		
 		if (usuario.isFlMenorIdade() == true && usuario.getNomeMae().isEmpty())
 		{
-			throw new Exception("É obrigatorio informar o nome do Responsável quando usuário é menor de idade");
+			return "É obrigatorio informar o nome do Responsável quando usuário é menor de idade";
 		}
 		
 		if (usuario.isFlIdoso() && usuario.isFlMenorIdade()) 
 		{
-			throw new Exception("O usuário não pode ser Idoso e Menor de Idade ao mesmo tempo");
+			return "O usuário não pode ser Idoso e Menor de Idade ao mesmo tempo";
 		}
 		
 		if (usuario.isFlIdoso() && usuario.isFlGestante()) 
 		{
-			throw new Exception("O usuário não pode ser Idoso e Gestante ao mesmo tempo");
+			return "O usuário não pode ser Idoso e Gestante ao mesmo tempo";
 		}
 		
 		dao.salvaUsuario(usuario);
+		
+		return "Sucesso";
 		
 		
 	}

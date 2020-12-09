@@ -24,6 +24,7 @@ public class CancelarConsulta extends HttpServlet {
 	Usuario usuarioLogado;
 	Consulta consulta;
 	DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+	String msg;
 
        
     /**
@@ -42,18 +43,35 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 		String data = request.getParameter("txtDtConsulta");
 		LocalDate dtConsulta = LocalDate.parse(data, format);
 		
+		msg = ConsultaBO.validarData(dtConsulta);
+		
+		if (!msg.isEmpty()) 
+		{
+			request.setAttribute("msg", msg);
+			RequestDispatcher rd = request.getRequestDispatcher("CancelarConsulta.jsp");
+			rd.forward(request, response);
+		}
+		
 		int cdUsuario = usuarioLogado.getCdUsuario();
 		
 		consulta = ConsultaBO.obterConsulta(dtConsulta, cdUsuario);
 		
 		
 		if (consulta != null) 
-		{						
+		{	
+			
 			request.setAttribute("consulta", consulta);
 			RequestDispatcher rd = request.getRequestDispatcher("CancelarConsulta.jsp");
 			rd.forward(request, response);
 			
 		} 
+		else 
+		{
+			msg = "Não foi encontrado nenhuma consulta agendada para a data selecionada";
+			request.setAttribute("msg", msg);
+			RequestDispatcher rd = request.getRequestDispatcher("CancelarConsulta.jsp");
+			rd.forward(request, response);
+		}
 		
 		
 	}
@@ -79,6 +97,9 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 				consulta.setFlvacina(false);
 				
 				consulta = ConsultaBO.agendarConsulta(consulta);
+				
+				msg = "Sucesso";
+				request.setAttribute("msg", msg);
 				
 				RequestDispatcher rd = request.getRequestDispatcher("CancelarConsulta.jsp");
 				rd.forward(request, response);

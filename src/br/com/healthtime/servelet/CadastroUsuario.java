@@ -27,6 +27,7 @@ public class CadastroUsuario extends HttpServlet {
 	
 	DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 	List<UnidadeSus> unidades;
+	String msg = new String();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -123,7 +124,7 @@ public class CadastroUsuario extends HttpServlet {
 				usuario.setEndereco(endereco);
 				
 				UsuarioBO bo = new UsuarioBO();
-				bo.salvaUsuario(usuario);;
+				msg = bo.salvaUsuario(usuario);;
 				
 
 			} catch (Exception e) {
@@ -136,6 +137,8 @@ private void processRequest(HttpServletRequest req, HttpServletResponse resp) th
 		
 		try {
 			validaDadosRecebidos(req);
+			System.out.println("msg" + msg);
+			req.setAttribute("msg", msg);
 			RequestDispatcher rd = req.getRequestDispatcher("Login");
 			rd.forward(req, resp);
 

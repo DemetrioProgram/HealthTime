@@ -79,6 +79,23 @@ public class ConsultaBO {
 		return ConsultaDAO.obterConsulta(dtConsulta, cdUsuario);
 		
 	}
+
+	public static String validarData(LocalDate dtConsulta) {
+		// TODO Auto-generated method st
+		LocalDate dataAtual = LocalDate.now();
+		
+		if (dtConsulta.isBefore(dataAtual)) 
+		{
+			return "A data selecionada deve ser igual ou maior que a data atual";
+		}
+		
+		if (dtConsulta.isAfter(dataAtual.plusDays(30))) 
+		{
+			return "A data máxima para agendar consulta é de 30 dias ";
+		}		
+		
+		return "";
+	}
 	
 	
 
