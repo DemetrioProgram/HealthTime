@@ -31,7 +31,7 @@ public class AgendarConsulta extends HttpServlet {
 	Consulta consultaAgendada = new Consulta();
 	DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 	List<Consulta> lstConsultas;
-       
+    String msg;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -48,9 +48,28 @@ public class AgendarConsulta extends HttpServlet {
 		String data = request.getParameter("txtDtConsulta");
 		LocalDate dtConsulta = LocalDate.parse(data, format);
 		
+		msg = ConsultaBO.validarData(dtConsulta);
+		
+		if (!msg.isEmpty()) 
+		{
+			request.setAttribute("msg", msg);
+			RequestDispatcher rd = request.getRequestDispatcher("AgendarConsulta.jsp");
+			rd.forward(request, response);
+		}
+		
+		Consulta objConsulta = ConsultaDAO.obterConsulta(dtConsulta, usuarioLogado.getCdUsuario());
+		
+		if (objConsulta != null)
+		{
+			msg = "Já há uma consulta agendada para a data selecionada";
+			request.setAttribute("msg", msg);
+			RequestDispatcher rd = request.getRequestDispatcher("AgendarConsulta.jsp");
+			rd.forward(request, response);
+		}
 		
 		lstConsultas = ConsultaBO.listarConsultas(dtConsulta);
 		
+
 		
 		if (lstConsultas != null) 
 		{
@@ -61,13 +80,14 @@ public class AgendarConsulta extends HttpServlet {
 			rd.forward(request, response);
 			
 		} 
+		else 
+		{
+			msg = "Não há consultas disponíveis para a data selecionada";
+			request.setAttribute("msg", msg);
+			RequestDispatcher rd = request.getRequestDispatcher("AgendarConsulta.jsp");
+			rd.forward(request, response);
+		}
 		
-		//if (usuarioAlterado != null) {
-			//request.setAttribute("usuario", null);
-			//RequestDispatcher rd = request.getRequestDispatcher("ValidarUsuario.jsp");
-			//rd.forward(request, response);
-			//response.sendRedirect("ValidarUsuario");			
-		//}
 		
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
@@ -102,6 +122,13 @@ public class AgendarConsulta extends HttpServlet {
 			usuarioLogado = (Usuario) request.getSession().getAttribute("usuario");
 			validaDadosRecebidos(request);
 			consultaAgendada = ConsultaBO.agendarConsulta(consultaAgendada);
+			
+			if (consultaAgendada != null) 
+			{
+				msg = "Sucesso";
+				request.setAttribute("msg", msg);
+			}
+			
 			RequestDispatcher rd = request.getRequestDispatcher("AgendarConsulta.jsp");
 			rd.forward(request, response);
 		} catch (Exception e) {
