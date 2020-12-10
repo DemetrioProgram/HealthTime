@@ -92,21 +92,36 @@
 
 #cadastroConsulta {
 	background-image: url("../img/cadastroConsulta.svg");
-	/*background-repeat: no-repeat;*/
 	background-size: 100%;
 	color: #41729F;
 }
 
 #validaUsuario {
 	background-image: url("../img/validaUsuario.svg");
-	/*background-repeat: no-repeat;*/
 	background-size: 100%;
 	color: #41729F;
 }
 
 #cadastroUsuario {
 	background-image: url("../img/cadastroUsuario.svg");
-	/*background-repeat: no-repeat;*/
+	background-size: 100%;
+	color: #41729F;
+}
+
+#agendarConsulta {
+	background-image: url("../img/agendarConsulta.svg");
+	background-size: 100%;
+	color: #41729F;
+}
+
+#cancelarConsulta {
+	background-image: url("../img/cancelarConsulta.svg");
+	background-size: 100%;
+	color: #41729F;
+}
+
+#principal {
+	background-image: url("../img/principal.svg");
 	background-size: 100%;
 	color: #41729F;
 }
@@ -127,4 +142,35 @@
 .imgCadastro {
 	float: right;
 	width: 50%;
+}
+
+/* The grid container */
+.grid-container {
+  display: grid;
+  grid-template-areas: 
+    'header header header header header header' 
+    'left left middle middle right right' 
+    'footer footer footer footer footer footer';
+} 
+
+.left,
+.middle,
+.right {
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+
+/* Style the left column */
+.left {
+  grid-area: left;
+}
+
+/* Style the middle column */
+.middle {
+  grid-area: middle;
+}
+
+/* Style the right column */
+.right {
+  grid-area: right;
 }
