@@ -20,7 +20,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <title>Cancelar Consulta</title>
 </head>
-<body id="CancelarConsulta">
+<body id="cancelarConsulta">
 
 	<%@include file="NavBar.jsp"%>
 	
@@ -46,7 +46,7 @@
 							</td>
 							
 							
-							<td align="left">
+							<td align="left" class="final-btn">
 								<input class="form-control" type="date" size="10" var="txtDtConsulta" id="txtDtConsulta" name="txtDtConsulta" required />
 							</td>	
 							

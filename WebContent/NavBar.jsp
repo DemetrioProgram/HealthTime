@@ -5,10 +5,10 @@
 <header>
 
 	<% 
-		Usuario usuario = (Usuario) request.getAttribute("usuario");
+		//Usuario usuario = (Usuario) request.getAttribute("usuario");
 	%>
 
-	<% if(usuario != null) { %>
+	<% //if(//usuario != null) { %>
 
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		
@@ -29,26 +29,38 @@
 				<a class="nav-link active font-weight-bold" href="Principal.jsp">
 					Inicio
 				</a> 
-					
-					<%if(usuario.getCodigo() != 1) {%>
-					
-				<a class="nav-link font-weight-bold"	href="CadastroConsulta">
+				
+				<a class="nav-link font-weight-bold" href="AgendarConsulta.jsp">
 					Agendar Consulta
+				</a> 
+				
+				<a class="nav-link font-weight-bold" href="CancelarConsulta.jsp">
+					Cancelar Consulta
+				</a> 
+					
+					<%//if(usuario.getCodigo() != 1) {%>
+					
+				<a class="nav-link font-weight-bold" href="CadastroConsulta">
+					Cadastrar Consulta
 				</a> 
 				
 				<a class="nav-link font-weight-bold" href="ValidarUsuario.jsp">
 					Validar Usuário
 				</a>
 								
-				<%}%>
+				<%//}%>
 				
 			</div>
 		</div>
 
+		<a class="nav-link font-weight-bold" href="#">
+					Sair
+		</a>
+		
 		<img
-			src="https://img.icons8.com/material/48/000000/user-male-circle--v1.png" />
+			src="resources/img/logo.png" width="3%"/>
 	</nav>
 	
-	<%}%>
+	<%//}%>
 
 </header>

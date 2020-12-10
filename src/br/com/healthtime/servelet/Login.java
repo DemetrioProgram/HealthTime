@@ -113,7 +113,6 @@ public class Login extends HttpServlet {
 		
 		if (gestor != null)
 		{
-			
 			RequestDispatcher rd = request.getRequestDispatcher("Principal.jsp");
 			request.getSession().setAttribute("gestor", gestor);
 			rd.forward(request, response); 
@@ -123,7 +122,7 @@ public class Login extends HttpServlet {
 		{
 			if (usuario.getCdUnidade().getCdUnidade() == cdUnidade)
 			{
-				RequestDispatcher rd = request.getRequestDispatcher("CancelarConsulta.jsp");				
+				RequestDispatcher rd = request.getRequestDispatcher("Principal.jsp");				
 				request.getSession().setAttribute("usuario", usuario);
 				rd.forward(request, response);
 			}

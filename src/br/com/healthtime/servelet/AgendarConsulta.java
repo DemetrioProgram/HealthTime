@@ -118,7 +118,6 @@ public class AgendarConsulta extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		try {
-			
 			usuarioLogado = (Usuario) request.getSession().getAttribute("usuario");
 			validaDadosRecebidos(request);
 			consultaAgendada = ConsultaBO.agendarConsulta(consultaAgendada);

@@ -23,7 +23,7 @@
 
 
 
-<body id="AgendarConsulta">
+<body id="agendarConsulta">
 
 	<%@include file="NavBar.jsp"%>
 	
@@ -49,8 +49,8 @@
 							</td>
 							
 							
-							<td align="left">
-								<input class="form-control" type="date" size="10" var="txtDtConsulta" id="txtDtConsulta" name="txtDtConsulta" required />
+							<td align="left" class="final-btn">
+								<input class="form-control" type="date" size="10" <% if (consulta != null) { %>  value="<%=consulta.getData()%>" <%} %> var="txtDtConsulta" id="txtDtConsulta" name="txtDtConsulta" required />
 							</td>	
 							
 							<td align="left">

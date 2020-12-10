@@ -24,7 +24,6 @@ import br.com.healthtime.entity.Usuario;
  */
 public class CadastroUsuario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
 	DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 	List<UnidadeSus> unidades;
 	String msg = new String();
@@ -65,7 +64,6 @@ public class CadastroUsuario extends HttpServlet {
 
 		String nmUsuario = req.getParameter("txtNome");
 		String nuCpf = req.getParameter("txtNuCpf");
-		
 		nuCpf = nuCpf.replace(".", "").replace("-", "");
 		String dtNascimento = req.getParameter("txtDtNascimento");	
 		String email = req.getParameter("txtEmail");
@@ -83,7 +81,6 @@ public class CadastroUsuario extends HttpServlet {
 		
 		UnidadeSus unidade = UnidadeDAO.recuperaUnidade(cdUnidade);
 		
-		
 		String nmRua = req.getParameter("txtNmRua");
 		String numero = req.getParameter("txtNumero");
 		String nmBairro = req.getParameter("txtBairro");
@@ -91,12 +88,7 @@ public class CadastroUsuario extends HttpServlet {
 		String UF = req.getParameter("cbxUf");
 		String nuCep = req.getParameter("txtCep");
 		
-		
-		
-
 			try {
-				
-
 				Usuario usuario = new Usuario();
 				usuario.setCodigo(1);
 				usuario.setNome(nmUsuario);
@@ -136,14 +128,21 @@ public class CadastroUsuario extends HttpServlet {
 private void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		try {
+			
 			validaDadosRecebidos(req);
-			System.out.println("msg" + msg);
+			
 			req.setAttribute("msg", msg);
-			RequestDispatcher rd = req.getRequestDispatcher("Login");
-			rd.forward(req, resp);
+			
+			if (msg.equals("Sucesso")) {
+				RequestDispatcher rd = req.getRequestDispatcher("Login");				
+				rd.forward(req, resp);
+			} else {
+				RequestDispatcher rd = req.getRequestDispatcher("CadastroUsuario.jsp");				
+				rd.forward(req, resp);
+			}
 
 		} catch (Exception e) {
-			RequestDispatcher rd = req.getRequestDispatcher("ErroLogin.jsp");
+			RequestDispatcher rd = req.getRequestDispatcher("CadastroUsuario.jsp");
 			rd.forward(req, resp);
 		}
 	

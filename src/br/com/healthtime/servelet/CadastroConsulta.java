@@ -59,10 +59,8 @@ public class CadastroConsulta extends HttpServlet {
 		
 		if (medicos != null || medicos.size() > 0)
 		{
-			
 			usuarioLogado = (Usuario) request.getSession().getAttribute("usuario");
 			request.setAttribute("medicos", medicos);
-			
 			
 			try {
 				validaDadosRecebidos(request);
@@ -84,13 +82,9 @@ public class CadastroConsulta extends HttpServlet {
 	
 	private void validaDadosRecebidos(HttpServletRequest req) throws ServletException {
 
-	
-
 		String dtConsulta = req.getParameter("txtDtConsulta");
 		String horario = req.getParameter("cbxHorario");
 		String Medico = req.getParameter("cbxMedico");
-		
-		
 		
 			try {
 				

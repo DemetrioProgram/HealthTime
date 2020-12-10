@@ -58,8 +58,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 		
 		
 		if (consulta != null) 
-		{	
-			
+		{
 			request.setAttribute("consulta", consulta);
 			RequestDispatcher rd = request.getRequestDispatcher("CancelarConsulta.jsp");
 			rd.forward(request, response);
