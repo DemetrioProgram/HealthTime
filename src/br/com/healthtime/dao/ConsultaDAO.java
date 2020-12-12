@@ -211,5 +211,41 @@ public class ConsultaDAO {
 		}
 	}
 
+	public static Consulta recuperarConsulta(LocalDate dtConsulta, int cdUsuario, String horario) {
+		// TODO Auto-generated method stub
+		Session session = HibernateUtil.getSessionFactory().openSession();
+
+		Transaction transaction = null;
+
+		try {
+			transaction = session.beginTransaction();	
+			System.out.println("cdUsuario: "+ cdUsuario);
+			
+			TypedQuery<Consulta> findAllQuery = session.createQuery("from Consulta where cdMedico="+cdUsuario
+					+" and data="+ "'"+dtConsulta+"' and horario='" + horario +"'", Consulta.class);	
+			
+			
+			
+			Consulta consulta = findAllQuery.getSingleResult();
+
+			System.out.println("Consulta" + consulta);
+
+			transaction.commit();
+
+			return consulta;
+
+		} catch (Exception e) {
+			System.out.println("Erro recuperarConsulta");
+			e.printStackTrace();
+			return null;
+		} finally {
+			if (session != null && session.isOpen()) {
+				//session.flush ();
+			    //session.clear ();
+				session.close();
+			}
+		}
+	}
+
 
 }

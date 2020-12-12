@@ -8,6 +8,12 @@
 	<packaging>war</packaging>
 	<dependencies>
 		<dependency>
+			<groupId>org.kie.modules</groupId>
+			<artifactId>org-apache-commons-fileupload</artifactId>
+			<version>6.5.0.Final</version>
+			<type>pom</type>
+		</dependency>
+		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
 			<version>5.2.6.Final</version>

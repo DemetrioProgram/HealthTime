@@ -4,12 +4,6 @@
 <!DOCTYPE html>
 <header>
 
-	<% 
-		//Usuario usuario = (Usuario) request.getAttribute("usuario");
-	%>
-
-	<% //if(//usuario != null) { %>
-
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		
 		<a class="navbar-brand" href="#">Health Time</a>
@@ -38,7 +32,7 @@
 					Cancelar Consulta
 				</a> 
 					
-					<%//if(usuario.getCodigo() != 1) {%>
+					<%if(session.getAttribute("gestor") != null) {%>
 					
 				<a class="nav-link font-weight-bold" href="CadastroConsulta">
 					Cadastrar Consulta
@@ -48,7 +42,7 @@
 					Validar Usuário
 				</a>
 								
-				<%//}%>
+				<%}%>
 				
 			</div>
 		</div>
@@ -60,7 +54,5 @@
 		<img
 			src="resources/img/logo.png" width="3%"/>
 	</nav>
-	
-	<%//}%>
 
 </header>

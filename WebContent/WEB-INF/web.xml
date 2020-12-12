@@ -40,6 +40,21 @@
         <servlet-class>br.com.healthtime.servelet.AgendarConsulta</servlet-class>
     </servlet>
     
+    <servlet>
+        <servlet-name>AdicionarReceita</servlet-name>
+        <servlet-class>br.com.healthtime.servelet.AdicionarReceita</servlet-class>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>ReceitaUpload</servlet-name>
+        <servlet-class>br.com.healthtime.servelet.ReceitaUpload</servlet-class>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>ReceitaDownload</servlet-name>
+        <servlet-class>br.com.healthtime.servelet.ReceitaDownload</servlet-class>
+    </servlet>
+    
           <servlet>
         <servlet-name>CancelarConsulta</servlet-name>
         <servlet-class>br.com.healthtime.servelet.CancelarConsulta</servlet-class>
@@ -49,6 +64,21 @@
         <servlet-name>Principal</servlet-name>
         <servlet-class>br.com.healthtime.servelet.Principal</servlet-class>
     </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>ReceitaUpload</servlet-name>
+        <url-pattern>/ReceitaUpload</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>ReceitaDownload</servlet-name>
+        <url-pattern>/ReceitaDownload</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>AdicionarReceita</servlet-name>
+        <url-pattern>/AdicionarReceita</url-pattern>
+    </servlet-mapping>
     
     <servlet-mapping>
         <servlet-name>CadastroUsuario</servlet-name>

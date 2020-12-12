@@ -120,6 +120,13 @@
 	color: #41729F;
 }
 
+#adicionarReceita {
+	background-image: url("../img/adicionarReceita.svg");
+	background-size: 65%;
+	background-repeat: no-repeat;
+	color: #41729F;
+}
+
 #principal {
 	background-image: url("../img/principal.svg");
 	background-size: 100%;

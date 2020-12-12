@@ -96,6 +96,11 @@ public class ConsultaBO {
 		
 		return "";
 	}
+
+	public static Consulta recuperarConsulta(LocalDate dtConsulta, int cdUsuario, String horario) {
+		// TODO Auto-generated method stub
+		return ConsultaDAO.recuperarConsulta(dtConsulta, cdUsuario, horario);
+	}
 	
 	
 
