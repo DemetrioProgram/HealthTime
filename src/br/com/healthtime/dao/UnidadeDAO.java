@@ -81,4 +81,40 @@ public class UnidadeDAO {
 		}
 	}
 
+	public static UnidadeSus obterUnidadeGestor(Integer cdGestor) {
+		// TODO Auto-generated method stub
+		Session session = HibernateUtil.getSessionFactory().openSession();
+
+		Transaction transaction = null;
+
+		try {
+			transaction = session.beginTransaction();	
+			
+			TypedQuery<UnidadeSus> findAllQuery = session.createQuery("from UnidadeSus where cdGestor="+ cdGestor 
+					+ " group by cdGestor", UnidadeSus.class);	
+			
+			
+			
+			UnidadeSus unidade = findAllQuery.getSingleResult();
+
+			System.out.println("Unidade" + unidade);
+
+			transaction.commit();
+
+			return unidade;
+
+		} catch (Exception e) {
+			System.out.println("Erro doObterGestor");
+			e.printStackTrace();
+			return null;
+		} finally {
+			if (session != null && session.isOpen()) {
+				//session.flush ();
+			    session.clear ();
+				session.close();
+				
+			}
+		}
+	}
+
 }

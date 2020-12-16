@@ -22,7 +22,7 @@
 
 	<%@include file="NavBar.jsp"%>
 	
-	<% Usuario usuario = (Usuario) request.getAttribute("usuario"); %>
+	<% Usuario usuarioReceita = (Usuario) request.getAttribute("usuario"); %>
 	<% Consulta consulta = (Consulta) request.getAttribute("consulta"); %>
 
 	<h1 align="center">Adicionar Receita</h1>

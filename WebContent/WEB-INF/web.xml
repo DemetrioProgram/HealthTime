@@ -65,6 +65,11 @@
         <servlet-class>br.com.healthtime.servelet.Principal</servlet-class>
     </servlet>
     
+    <servlet>
+        <servlet-name>DetalharConsulta</servlet-name>
+        <servlet-class>br.com.healthtime.servelet.DetalharConsulta</servlet-class>
+    </servlet>
+    
     <servlet-mapping>
         <servlet-name>ReceitaUpload</servlet-name>
         <url-pattern>/ReceitaUpload</url-pattern>
@@ -113,6 +118,11 @@
     <servlet-mapping>
         <servlet-name>Principal</servlet-name>
         <url-pattern>/Principal</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>DetalharConsulta</servlet-name>
+        <url-pattern>/DetalharConsulta</url-pattern>
     </servlet-mapping>
 	
 </web-app>

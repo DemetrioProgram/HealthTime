@@ -1,8 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 	<%@page import="br.com.healthtime.entity.Usuario"%>
+	<%@page import="br.com.healthtime.entity.Gestor"%>
 <!DOCTYPE html>
 <header>
+
+	<% 
+		Usuario usuario = (Usuario) session.getAttribute("usuario");
+		Gestor gestor = (Gestor) session.getAttribute("gestor");
+	%>
 
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		
@@ -32,11 +38,24 @@
 					Cancelar Consulta
 				</a> 
 					
-					<%if(session.getAttribute("gestor") != null) {%>
+					<%if(usuario != null && usuario.getCodigo() != 1) {%>
 					
 				<a class="nav-link font-weight-bold" href="CadastroConsulta">
 					Cadastrar Consulta
 				</a> 
+					
+					<%}%>
+					
+					<%if(usuario != null && usuario.getCodigo() == 2) {%>
+					
+				<a class="nav-link font-weight-bold" href="AdicionarReceita.jsp">
+					Adicionar Receita
+				</a> 
+					
+					<%}%>
+					
+					<%if(gestor != null) {%>
+									
 				
 				<a class="nav-link font-weight-bold" href="ValidarUsuario.jsp">
 					Validar Usuário

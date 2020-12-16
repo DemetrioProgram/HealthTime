@@ -111,20 +111,38 @@ public class Login extends HttpServlet {
 		usuario = UsuarioDAO.doLogin(cpf);
 		
 		
+		
+		
 		if (gestor != null)
 		{
-			RequestDispatcher rd = request.getRequestDispatcher("Principal.jsp");
-			request.getSession().setAttribute("gestor", gestor);
-			rd.forward(request, response); 
+			UnidadeSus unidadeGestor = UnidadeDAO.obterUnidadeGestor(gestor.getCdGestor());
+			
+			if (unidadeGestor.getCdUnidade() == cdUnidade)
+			{
+				System.out.println("unidade gestor"+ unidadeGestor);
+				RequestDispatcher rd = request.getRequestDispatcher("Principal.jsp");
+				request.getSession().setAttribute("gestor", gestor);
+				rd.forward(request, response); 
+				
+			}
+			else 
+			{
+				request.setAttribute("erro", new Exception("Selecione a Unidade SUS correta"));
+				RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
+				rd.forward(request, response);
+			}
+			
+			
 		}
 		
 		if (usuario != null)
 		{
 			if (usuario.getCdUnidade().getCdUnidade() == cdUnidade)
 			{
-				RequestDispatcher rd = request.getRequestDispatcher("AdicionarReceita.jsp");				
+				RequestDispatcher rd = request.getRequestDispatcher("DetalharConsulta.jsp");	
 				request.getSession().setAttribute("usuario", usuario);
 				rd.forward(request, response);
+	
 			}
 			else 
 			{

@@ -101,6 +101,19 @@ public class ConsultaBO {
 		// TODO Auto-generated method stub
 		return ConsultaDAO.recuperarConsulta(dtConsulta, cdUsuario, horario);
 	}
+
+	public static String validarDataDetalhe(LocalDate dtConsulta) {
+		// TODO Auto-generated method stub
+		LocalDate dataAtual = LocalDate.now();
+		
+		if (dtConsulta.isAfter(dataAtual)) 
+		{
+			return "A data da consulta deve ser inferior a data atual";
+		}		
+		
+		
+		return "";
+	}
 	
 	
 
