@@ -19,7 +19,7 @@
 	<%@include file="NavBar.jsp" %>
 	
 	<% 
-		Usuario usuario = (Usuario) request.getAttribute("usuario");
+		Usuario usuarioValidar = (Usuario) request.getAttribute("usuario");
 	%>
 	<h1 align="center">Valide o Usuário</h1>
 	
@@ -44,12 +44,12 @@
 							</td>	
 						</tr>
 						
-						<% if(usuario != null) { %>
+						<% if(usuarioValidar != null) { %>
 
 						<tr>
 							<td align="right"><label class="font-weight-bold">Nome:</label></td>
 							<td align="left">
-							<input class="form-control" type="text" size="70" name="txtNome" value="<%= usuario.getNome() %>" disabled
+							<input class="form-control" type="text" size="70" name="txtNome" value="<%= usuarioValidar.getNome() %>" disabled
 								required />
 								</td>
 						</tr>
@@ -57,92 +57,92 @@
 						<tr>
 							<td align="right"><label class="font-weight-bold">Data
 									Nascimento:</label></td>
-							<td align="left"><input class="form-control" type="date" name="txtDtNascimento" value="<%= usuario.getDtnascimento() %>" disabled
+							<td align="left"><input class="form-control" type="date" name="txtDtNascimento" value="<%= usuarioValidar.getDtnascimento() %>" disabled
 								required /></td>
 						</tr>
 
 						<tr>
 							<td align="right"><label class="font-weight-bold">E-mail:</label></td>
-							<td align="left"><input class="form-control" type="text" name="txtEmail" value="<%= usuario.getEmail()%>" required disabled /></td>
+							<td align="left"><input class="form-control" type="text" name="txtEmail" value="<%= usuarioValidar.getEmail()%>" required disabled /></td>
 						</tr>
 
 						<tr>
 							<td align="right"><label class="font-weight-bold">Gestante:</label></td>
-							<td align="left"><input type="checkbox" name="flGestante" value="<%= usuario.isFlGestante() %>" disabled /></td>
+							<td align="left"><input type="checkbox" name="flGestante" value="<%= usuarioValidar.isFlGestante() %>" disabled /></td>
 						</tr>
 
 						<tr>
 							<td align="right"><label class="font-weight-bold">Idoso:</label></td>
-							<td align="left"><input type="checkbox" name="flIdoso" value="<%= usuario.isFlIdoso() %>" disabled /></td>
+							<td align="left"><input type="checkbox" name="flIdoso" value="<%= usuarioValidar.isFlIdoso() %>" disabled /></td>
 						</tr>
 
 						<tr>
 							<td align="right"><label class="font-weight-bold">Menor de
 									Idade:</label></td>
-							<td align="left"><input type="checkbox" name="flMenorIdade" value="<%= usuario.isFlMenorIdade() %>" disabled /></td>
+							<td align="left"><input type="checkbox" name="flMenorIdade" value="<%= usuarioValidar.isFlMenorIdade() %>" disabled /></td>
 						</tr>
 
 						<tr>
 							<td align="right"><label class="font-weight-bold">Pessoa com
 									Nessecidades Especiais:</label></td>
-							<td align="left"><input type="checkbox" name="flPne" value="<%= usuario.isFlPne() %>" disabled /></td>
+							<td align="left"><input type="checkbox" name="flPne" value="<%= usuarioValidar.isFlPne() %>" disabled /></td>
 						</tr>
 
 						<tr>
 							<td align="right"><label class="font-weight-bold">Nome da Mãe:</label>
 							</td>
-							<td align="left"><input class="form-control" type="text" name="txtNmMae" value="<%= usuario.getNomeMae() %>" required disabled /></td>
+							<td align="left"><input class="form-control" type="text" name="txtNmMae" value="<%= usuarioValidar.getNomeMae() %>" required disabled /></td>
 						</tr>
 
 						<tr>
 							<td align="right"><label class="font-weight-bold">Tel. Contato:</label>
 							</td>
-							<td align="left"><input class="form-control" type="text" name="txtNuContato" value="<%= usuario.getNuContatoPrincipal() %>" disabled /></td>
+							<td align="left"><input class="form-control" type="text" name="txtNuContato" value="<%= usuarioValidar.getNuContatoPrincipal() %>" disabled /></td>
 						</tr>
 
 						<tr>
 							<td align="right"><label class="font-weight-bold">Tel. Contato
 									2:</label></td>
-							<td align="left"><input class="form-control" type="text" name="txtNuContato2" value="<%= usuario.getNuContatoSecundario() %>" disabled /></td>
+							<td align="left"><input class="form-control" type="text" name="txtNuContato2" value="<%= usuarioValidar.getNuContatoSecundario() %>" disabled /></td>
 						</tr>
 
 						<tr>
 							<td align="right"><label class="font-weight-bold">Número SUS:</label></td>
-							<td align="left"><input class="form-control" type="text" name="txtNuSus" value="<%= usuario.getSus() %>" disabled /></td>
+							<td align="left"><input class="form-control" type="text" name="txtNuSus" value="<%= usuarioValidar.getSus() %>" disabled /></td>
 						</tr>
 
 						<tr>
 							<td align="right"><label class="font-weight-bold">Logradouro:</label></td>
 							<td align="left"><input class="form-control" type="text" size="70"
-								name="txtNmRua" value="<%= usuario.getEndereco().getRua() %>" required disabled /></td>
+								name="txtNmRua" value="<%= usuarioValidar.getEndereco().getRua() %>" required disabled /></td>
 						</tr>
 
 						<tr>
 							<td align="right"><label class="font-weight-bold">Número:</label></td>
 							<td align="left"><input class="form-control" type="text" size="6"
-								name="txtNumero" value="<%= usuario.getEndereco().getNumero() %>" required disabled /></td>
+								name="txtNumero" value="<%= usuarioValidar.getEndereco().getNumero() %>" required disabled /></td>
 						</tr>
 
 						<tr>
 							<td align="right"><label class="font-weight-bold">Bairro:</label></td>
-							<td align="left"><input class="form-control" type="text" name="txtBairro" value="<%= usuario.getEndereco().getBairro() %>" disabled /></td>
+							<td align="left"><input class="form-control" type="text" name="txtBairro" value="<%= usuarioValidar.getEndereco().getBairro() %>" disabled /></td>
 						</tr>
 
 						<tr>
 							<td align="right"><label class="font-weight-bold">Cidade:</label></td>
-							<td align="left"><input class="form-control" type="text" name="txtCidade" value="<%= usuario.getEndereco().getCidade() %>" disabled /></td>
+							<td align="left"><input class="form-control" type="text" name="txtCidade" value="<%= usuarioValidar.getEndereco().getCidade() %>" disabled /></td>
 						</tr>
 
 						<tr>
 							<td align="right"><label class="font-weight-bold">UF</label></td>
 							<td>
-								<input class="form-control" type="text" id="cbxUf" name="cbxUf" value="<%= usuario.getEndereco().getUf() %>" required disabled >
+								<input class="form-control" type="text" id="cbxUf" name="cbxUf" value="<%= usuarioValidar.getEndereco().getUf() %>" required disabled >
 							</td>
 						</tr>
 
 						<tr>
 							<td align="right"><label class="font-weight-bold">CEP:</label></td>
-							<td align="left"><input class="form-control" type="text" name="txtCep" value="<%= usuario.getEndereco().getCep() %>" required disabled /></td>
+							<td align="left"><input class="form-control" type="text" name="txtCep" value="<%= usuarioValidar.getEndereco().getCep() %>" required disabled /></td>
 						</tr>
 
 						<tr>

@@ -119,8 +119,6 @@
 	
 	<% if(consulta != null) { %>
 	
-	<a href="ReceitaDownload?cdConsulta=<%=consulta.getCdConsulta()%>" target="_blanck">Baixar Receita</a>
-	
 	<form action="ReceitaUpload?cdConsulta=<%=consulta.getCdConsulta()%>" method="POST" enctype="multipart/form-data" 
 			style="width: 25%; margin-top: 5%; margin-left: 35%; border-style: inherit;">  
 		<div style="text-align: center;" class="mb-3">

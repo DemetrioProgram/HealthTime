@@ -81,6 +81,18 @@
 							<td>
 								<input class="form-control" type="text" size="70" name="txtHorario" value="<%= medico.getNome() %>" disabled/>
 							</td>
+						</tr>
+						
+						<tr>
+							<td align="right">
+								<label class="font-weight-bold">
+									Receita:
+								</label>
+							</td>
+							
+							<td>
+								<a href="ReceitaDownload?cdConsulta=<%=consulta.getCdConsulta()%>" target="_blanck">Baixar Receita</a>
+							</td>
 						</tr>						
 
 						<% } %>

@@ -66,7 +66,7 @@
 			</div>
 		</div>
 
-		<a class="nav-link font-weight-bold" href="#">
+		<a class="nav-link font-weight-bold" href="Logout.jsp">
 					Sair
 		</a>
 		
