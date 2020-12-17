@@ -3,5 +3,5 @@
 <!DOCTYPE html>
 <% 
 	session.invalidate();
-	response.sendRedirect("Login.jsp");
+	response.sendRedirect("Login");
 %>

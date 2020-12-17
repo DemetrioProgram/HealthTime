@@ -127,6 +127,13 @@
 	color: #41729F;
 }
 
+#detalharConsulta {
+	background-image: url("../img/detalharConsulta.svg");
+	background-size: 100%;
+	background-repeat: no-repeat;
+	color: #41729F;
+}
+
 #principal {
 	background-image: url("../img/principal.svg");
 	background-size: 100%;
